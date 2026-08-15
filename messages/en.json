@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "title": "Elchi Pochta — delivery service for e-commerce",
+    "description": "Elchi Pochta is a delivery service for online stores. We collect the order from you, deliver it to your customer anywhere in Uzbekistan, and show you every step.",
+    "servicesTitle": "Services — Elchi Pochta",
+    "pricingTitle": "Pricing — Elchi Pochta",
+    "partnersTitle": "Partners — Elchi Pochta"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "partners": "Partners",
+    "cta": "Request a quote",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language"
+  },
+  "hero": {
+    "badge": "A postal service built for e-commerce",
+    "title": "Your order reaches the customer on time",
+    "subtitle": "Elchi Pochta is a delivery service for online stores. We collect the order from you, deliver it to your customer anywhere in Uzbekistan, and show you every step.",
+    "ctaCalc": "Calculate the price",
+    "ctaPartner": "Work with us",
+    "note": "Parcels up to 1 kg within Tashkent — from 15,000 UZS"
+  },
+  "track": {
+    "title": "Track a parcel",
+    "subtitle": "Enter the parcel ID and see its status.",
+    "button": "Track",
+    "collected": "Collected",
+    "sorting": "At the sorting centre",
+    "transit": "In transit",
+    "expectedToday": "expected today",
+    "sample": "Sample data"
+  },
+  "stats": {
+    "regions": "Coverage across Uzbekistan",
+    "delivery": "Delivery time",
+    "onTime": "Parcels delivered on time",
+    "support": "Customer support"
+  },
+  "band": {
+    "caption": "The Elchi Pochta team and sorting centre, Tashkent"
+  },
+  "services": {
+    "kicker": "Services",
+    "title": "Everything an online store needs",
+    "all": "All services",
+    "delivery": {
+      "title": "Order delivery",
+      "body": "We deliver to the customer's door, collect payment in cash or by card, and transfer the money to you."
+    },
+    "pickup": {
+      "title": "Courier pickup",
+      "body": "We collect parcels from your store or warehouse at an agreed time."
+    },
+    "returns": {
+      "title": "Returns and exchanges",
+      "body": "If the customer returns or exchanges an item, we bring it back to you free of charge."
+    }
+  },
+  "calc": {
+    "kicker": "Calculator",
+    "title": "Calculate your delivery price",
+    "subtitle": "Enter the dimensions and weight — the price appears immediately.",
+    "from": "From",
+    "to": "To",
+    "weight": "Weight (kg)",
+    "length": "Length (cm)",
+    "width": "Width (cm)",
+    "height": "Height (cm)",
+    "type": "Service type",
+    "standard": "Standard",
+    "express": "Express",
+    "pickupOption": "Have a courier collect it from me",
+    "note": "Volumetric weight = length × width × height ÷ 5000. The price is based on the greater of actual and volumetric weight.",
+    "summary": "Breakdown",
+    "route": "Route",
+    "actual": "Actual weight",
+    "volumetric": "Volumetric weight",
+    "billable": "Chargeable weight",
+    "base": "Base rate",
+    "extraWeight": "Additional weight",
+    "expressFee": "Express delivery",
+    "pickupFee": "Courier pickup",
+    "total": "Total",
+    "days": "Delivery time"
+  },
+  "how": {
+    "kicker": "How it works",
+    "title": "Four steps, no extra worry",
+    "one": {
+      "title": "You register the order",
+      "body": "Enter the parcel details on the site or in the Telegram bot."
+    },
+    "two": {
+      "title": "A courier collects it",
+      "body": "The courier arrives at the agreed time and takes the parcel."
+    },
+    "three": {
+      "title": "It passes the sorting centre",
+      "body": "The parcel is sorted by route and sent on its way."
+    },
+    "four": {
+      "title": "It reaches the customer",
+      "body": "The courier collects payment while you watch the status in real time."
+    }
+  },
+  "coverage": {
+    "kicker": "Coverage",
+    "title": "Across Uzbekistan, in four zones",
+    "subtitle": "Every region belongs to a zone. The zone sets the price and the time.",
+    "zone": "Zone",
+    "regions": "Regions",
+    "upTo1kg": "Up to 1 kg, UZS",
+    "perExtraKg": "Each extra kg, UZS",
+    "term": "Time",
+    "zone1": "Zone 1",
+    "zone2": "Zone 2",
+    "zone3": "Zone 3",
+    "zone4": "Zone 4",
+    "zone1Regions": "Within Tashkent city",
+    "zone2Regions": "Tashkent region",
+    "zone3Regions": "Samarkand, Bukhara, Navoiy, Jizzakh, Sirdaryo, Fergana, Andijan, Namangan, Kashkadarya",
+    "zone4Regions": "Surkhandarya, Khorezm, Karakalpakstan"
+  },
+  "why": {
+    "kicker": "Why Elchi Pochta",
+    "title": "A small team paying close attention",
+    "know": {
+      "title": "We know every client",
+      "body": "We are still small, so we work with each store personally and resolve issues within a day."
+    },
+    "price": {
+      "title": "Transparent pricing",
+      "body": "No hidden fees. The price the calculator shows is the price you pay."
+    },
+    "responsibility": {
+      "title": "We take responsibility",
+      "body": "Every parcel is insured. If it is damaged, we cover the value of the goods."
+    },
+    "telegram": {
+      "title": "Everything over Telegram",
+      "body": "Booking, tracking and reports all happen inside the bot."
+    }
+  },
+  "faq": {
+    "kicker": "Q&A",
+    "title": "Frequently asked questions",
+    "q1": "Is there a minimum order volume?",
+    "a1": "No minimum. We accept your parcels even if there is only one a day.",
+    "q2": "Do you collect payment from the customer?",
+    "a2": "Yes. The courier accepts cash or card, and the money reaches your account in 1–2 business days.",
+    "q3": "How do I track a parcel?",
+    "a3": "Each parcel gets an ID. Check its status by ID on the site or in the bot.",
+    "q4": "Do you carry fragile goods?",
+    "a4": "Yes, with special packaging. Just mark the order as fragile when booking.",
+    "q5": "Is a contract required?",
+    "a5": "For ongoing partnership, yes. A one-off parcel needs no contract."
+  },
+  "servicesPage": {
+    "kicker": "Our services",
+    "title": "The full delivery cycle for an online store",
+    "subtitle": "Take these services separately or together. Most stores start with the first two.",
+    "s1": {
+      "title": "Door-to-door delivery",
+      "body": "The courier hands the parcel to the customer. If nobody is home, we call and come back — at no extra cost."
+    },
+    "s2": {
+      "title": "Cash-on-delivery collection",
+      "body": "We take the value of the goods from the customer in cash or by card and transfer it to you in 1–2 business days."
+    },
+    "s3": {
+      "title": "Daily pickup",
+      "body": "At an agreed time the courier visits your store and takes the day's parcels in one go."
+    },
+    "s4": {
+      "title": "Packaging",
+      "body": "We pack in cardboard, bubble wrap and tape, with extra protection for fragile goods."
+    },
+    "s5": {
+      "title": "Returns handling",
+      "body": "We hold refused parcels for a few days, then return them to you or forward them elsewhere."
+    },
+    "s6": {
+      "title": "Insurance",
+      "body": "Every parcel is insured by default. For high-value goods, extra cover costs 1% of the declared value."
+    }
+  },
+  "pricingPage": {
+    "kicker": "Prices",
+    "title": "Rates and additional services",
+    "subtitle": "All prices are for parcels up to 1 kg. Above that, a surcharge applies per additional kilogram.",
+    "extrasTitle": "Additional services",
+    "service": "Service",
+    "price": "Price",
+    "pickup": "Courier pickup",
+    "express": "Express delivery",
+    "expressValue": "×1.4 on the base rate",
+    "return": "Return",
+    "returnValue": "50% of the base rate",
+    "insurance": "Extra insurance",
+    "insuranceValue": "1% of declared value",
+    "packaging": "Packaging (standard)",
+    "packagingValue": "Free",
+    "partnerKicker": "Partners",
+    "partnerText": "Sending more than 300 parcels a month earns a separate contract rate.",
+    "partnerCta": "Go to the calculator"
+  },
+  "partnersPage": {
+    "kicker": "Become a partner",
+    "title": "We connect your store within a week",
+    "subtitle": "From agreement to first parcel usually takes 3–5 business days.",
+    "p1": {
+      "title": "You leave a request",
+      "body": "A manager calls within a day to confirm volumes and destinations."
+    },
+    "p2": {
+      "title": "We agree the price",
+      "body": "The rate is set by how many parcels you send monthly."
+    },
+    "p3": {
+      "title": "The contract is signed",
+      "body": "Documents are signed online, and the warehouse and pickup time are fixed."
+    },
+    "p4": {
+      "title": "The first parcel goes out",
+      "body": "You get a personal manager and a Telegram bot."
+    }
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Would you like a quote for your store?",
+    "subtitle": "We call within a day and quote a price based on how many parcels you send each month.",
+    "name": "Your name",
+    "phone": "Phone",
+    "shop": "Store name or link",
+    "volume": "Approximate parcels per month",
+    "message": "Message",
+    "messagePlaceholder": "What kind of goods do you send?",
+    "submit": "Send request",
+    "telegram": "Telegram",
+    "address": "Address",
+    "addressValue": "108 Amir Temur Street, Yunusabad, Tashkent",
+    "hours": "Opening hours",
+    "hoursValue": "Monday–Saturday, 09:00–19:00"
+  },
+  "form": {
+    "sending": "Sending...",
+    "success": "Request received. A manager will contact you within one business day.",
+    "error": "The request was not sent. Please try again or call us.",
+    "requiredName": "Enter your name",
+    "requiredPhone": "Enter your phone number",
+    "invalidPhone": "The phone number is incomplete"
+  },
+  "footer": {
+    "tagline": "A delivery service for e-commerce.",
+    "rights": "All rights reserved."
+  },
+  "regions": {
+    "tsh": "Tashkent (city)",
+    "tshv": "Tashkent region",
+    "sam": "Samarkand",
+    "buh": "Bukhara",
+    "nav": "Navoiy",
+    "jiz": "Jizzakh",
+    "sir": "Sirdaryo",
+    "far": "Fergana",
+    "and": "Andijan",
+    "nam": "Namangan",
+    "qas": "Kashkadarya",
+    "sur": "Surkhandarya",
+    "xor": "Khorezm",
+    "qqr": "Karakalpakstan"
+  },
+  "units": {
+    "kg": "kg",
+    "currency": "UZS",
+    "day": "day",
+    "days": "days",
+    "zoneSuffix": "-zone",
+    "none": "—"
+  },
+  "slots": {
+    "hero-bg": "Hero background: a courier, a van or the sorting centre",
+    "band-1": "Sorting centre: collected parcels",
+    "band-2": "A courier handing a parcel to a customer",
+    "band-3": "Branded packaging: box and tape",
+    "band-4": "The team in branded uniform",
+    "step-1": "Placing an order in the Telegram bot or on the site",
+    "step-2": "A courier collecting a parcel from the shop",
+    "step-3": "Work inside the sorting centre",
+    "step-4": "A customer receiving the parcel",
+    "coverage": "A map or a courier photo",
+    "team": "A team photo or a branded van",
+    "svc-01": "The door-to-door delivery process",
+    "svc-02": "Taking payment on a card terminal",
+    "svc-03": "The daily pickup from a shop",
+    "svc-04": "The packing table",
+    "svc-05": "The returns shelf",
+    "svc-06": "An insured high-value item"
+  }
+}

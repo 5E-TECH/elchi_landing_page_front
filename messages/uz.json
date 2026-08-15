@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "title": "Elchi Pochta — e-commerce uchun yetkazib berish xizmati",
+    "description": "Elchi Pochta — onlayn do'konlar uchun yetkazib berish xizmati. Buyurtmani sizdan olib ketamiz, O'zbekiston bo'ylab mijozga yetkazamiz va har bir qadamni ko'rsatib turamiz.",
+    "servicesTitle": "Xizmatlar — Elchi Pochta",
+    "pricingTitle": "Tariflar — Elchi Pochta",
+    "partnersTitle": "Hamkorlik — Elchi Pochta"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "services": "Xizmatlar",
+    "pricing": "Tariflar",
+    "partners": "Hamkorlik",
+    "cta": "Ariza qoldirish",
+    "openMenu": "Menyuni ochish",
+    "closeMenu": "Menyuni yopish",
+    "language": "Til"
+  },
+  "hero": {
+    "badge": "E-commerce uchun pochta xizmati",
+    "title": "Buyurtmangiz mijozga o'z vaqtida yetib boradi",
+    "subtitle": "Elchi Pochta — onlayn do'konlar uchun yetkazib berish xizmati. Buyurtmani sizdan olib ketamiz, O'zbekiston bo'ylab mijozga yetkazamiz va har bir qadamni ko'rsatib turamiz.",
+    "ctaCalc": "Narxni hisoblash",
+    "ctaPartner": "Biz bilan ishlash",
+    "note": "Toshkent ichida 1 kg gacha jo'natma — 15 000 so'mdan"
+  },
+  "track": {
+    "title": "Jo'natmani kuzatish",
+    "subtitle": "Jo'natma ID raqamini kiriting va holatini ko'ring.",
+    "button": "Kuzatish",
+    "collected": "Qabul qilindi",
+    "sorting": "Saralash markazida",
+    "transit": "Yo'lda",
+    "expectedToday": "bugun kutilmoqda",
+    "sample": "Namuna ma'lumot"
+  },
+  "stats": {
+    "regions": "O'zbekiston bo'ylab qamrov",
+    "delivery": "Yetkazib berish muddati",
+    "onTime": "O'z vaqtida yetkazilgan jo'natmalar",
+    "support": "Qo'llab-quvvatlash xizmati"
+  },
+  "band": {
+    "caption": "Elchi Pochta jamoasi va saralash markazi, Toshkent"
+  },
+  "services": {
+    "kicker": "Xizmatlar",
+    "title": "Onlayn savdo uchun kerak bo'ladigan hamma narsa",
+    "all": "Barcha xizmatlar",
+    "delivery": {
+      "title": "Buyurtmalarni yetkazish",
+      "body": "Mijoz manziliga eshikkacha yetkazamiz. Naqd yoki karta orqali to'lovni qabul qilib, pulni sizga o'tkazamiz."
+    },
+    "pickup": {
+      "title": "Kuryer olib ketishi",
+      "body": "Do'koningizdan yoki omboringizdan jo'natmalarni belgilangan vaqtda o'zimiz olib ketamiz."
+    },
+    "returns": {
+      "title": "Qaytarish va almashtirish",
+      "body": "Mijoz tovarni qaytarsa yoki almashtirsa, biz uni sizga bepul olib kelamiz."
+    }
+  },
+  "calc": {
+    "kicker": "Kalkulyator",
+    "title": "Yetkazib berish narxini hisoblang",
+    "subtitle": "O'lcham, hajm va vaznni kiriting — narx darhol chiqadi.",
+    "from": "Qayerdan",
+    "to": "Qayerga",
+    "weight": "Vazn (kg)",
+    "length": "Uzunlik (sm)",
+    "width": "Kenglik (sm)",
+    "height": "Balandlik (sm)",
+    "type": "Yetkazish turi",
+    "standard": "Oddiy",
+    "express": "Tezkor",
+    "pickupOption": "Kuryer manzilimdan olib ketsin",
+    "note": "Hajmli vazn = uzunlik × kenglik × balandlik ÷ 5000. Narx haqiqiy va hajmli vaznning kattasidan hisoblanadi.",
+    "summary": "Hisob-kitob",
+    "route": "Yo'nalish",
+    "actual": "Haqiqiy vazn",
+    "volumetric": "Hajmli vazn",
+    "billable": "Hisoblanadigan vazn",
+    "base": "Asosiy narx",
+    "extraWeight": "Qo'shimcha vazn",
+    "expressFee": "Tezkor yetkazish",
+    "pickupFee": "Kuryer olib ketishi",
+    "total": "Jami",
+    "days": "Yetkazib berish muddati"
+  },
+  "how": {
+    "kicker": "Qanday ishlaydi",
+    "title": "To'rt qadam, ortiqcha tashvish yo'q",
+    "one": {
+      "title": "Buyurtmani ro'yxatdan o'tkazasiz",
+      "body": "Saytda yoki Telegram bot orqali jo'natma ma'lumotlarini kiritasiz."
+    },
+    "two": {
+      "title": "Kuryer olib ketadi",
+      "body": "Belgilangan vaqtda kuryer keladi va jo'natmani qabul qiladi."
+    },
+    "three": {
+      "title": "Saralash markazidan o'tadi",
+      "body": "Jo'natma yo'nalish bo'yicha saralanadi va yo'lga chiqadi."
+    },
+    "four": {
+      "title": "Mijozga yetkaziladi",
+      "body": "Kuryer to'lovni qabul qiladi, siz esa holatni real vaqtda ko'rasiz."
+    }
+  },
+  "coverage": {
+    "kicker": "Qamrov",
+    "title": "O'zbekiston bo'ylab, to'rt zonada",
+    "subtitle": "Har bir hudud zonaga bo'lingan. Zona narx va muddatni belgilaydi.",
+    "zone": "Zona",
+    "regions": "Hududlar",
+    "upTo1kg": "1 kg gacha, so'm",
+    "perExtraKg": "Har qo'shimcha kg, so'm",
+    "term": "Muddat",
+    "zone1": "1-zona",
+    "zone2": "2-zona",
+    "zone3": "3-zona",
+    "zone4": "4-zona",
+    "zone1Regions": "Toshkent shahri ichida",
+    "zone2Regions": "Toshkent viloyati",
+    "zone3Regions": "Samarqand, Buxoro, Navoiy, Jizzax, Sirdaryo, Farg'ona, Andijon, Namangan, Qashqadaryo",
+    "zone4Regions": "Surxondaryo, Xorazm, Qoraqalpog'iston"
+  },
+  "why": {
+    "kicker": "Nega Elchi Pochta",
+    "title": "Kichik jamoa, katta e'tibor",
+    "know": {
+      "title": "Har bir mijozni bilamiz",
+      "body": "Biz hozircha kichikmiz — shuning uchun har bir do'kon bilan alohida ishlaymiz va muammoni bir kunda hal qilamiz."
+    },
+    "price": {
+      "title": "Shaffof narx",
+      "body": "Yashirin to'lov yo'q. Kalkulyator ko'rsatgan narx — yakuniy narx."
+    },
+    "responsibility": {
+      "title": "Jo'natma uchun javob beramiz",
+      "body": "Har bir jo'natma sug'urtalangan. Zarar yetsa, tovar qiymatini qoplaymiz."
+    },
+    "telegram": {
+      "title": "Telegram orqali ishlash",
+      "body": "Ariza berish, kuzatish va hisobot — hammasi bot ichida."
+    }
+  },
+  "faq": {
+    "kicker": "Savol-javob",
+    "title": "Ko'p so'raladigan savollar",
+    "q1": "Eng kichik buyurtma hajmi qancha?",
+    "a1": "Chegara yo'q. Bir kunda bitta jo'natma bo'lsa ham qabul qilamiz.",
+    "q2": "To'lovni mijozdan olasizmi?",
+    "a2": "Ha. Kuryer naqd yoki karta orqali to'lovni qabul qiladi, pul 1–2 ish kunida hisobingizga tushadi.",
+    "q3": "Jo'natmani qanday kuzataman?",
+    "a3": "Har bir jo'natmaga ID beriladi. Saytda yoki botda ID orqali holatni ko'rasiz.",
+    "q4": "Mo'rt tovarlarni yetkazasizmi?",
+    "a4": "Ha, maxsus qadoqlash bilan. Buyurtma berishda «mo'rt» belgisini qo'yish kifoya.",
+    "q5": "Shartnoma kerakmi?",
+    "a5": "Doimiy hamkorlik uchun — ha. Bir martalik jo'natma uchun shartnoma shart emas."
+  },
+  "servicesPage": {
+    "kicker": "Xizmatlarimiz",
+    "title": "Onlayn do'kon uchun yetkazib berishning to'liq aylanishi",
+    "subtitle": "Quyidagi xizmatlarni alohida yoki birgalikda olishingiz mumkin. Ko'pchilik do'konlar birinchi ikkitasidan boshlaydi.",
+    "s1": {
+      "title": "Eshikkacha yetkazish",
+      "body": "Kuryer jo'natmani mijozning qo'liga topshiradi. Mijoz uyda bo'lmasa, qo'ng'iroq qilib qayta kelamiz — qo'shimcha to'lovsiz."
+    },
+    "s2": {
+      "title": "Naqd to'lovni yig'ish",
+      "body": "Tovar qiymatini mijozdan naqd yoki karta orqali olamiz va 1–2 ish kunida hisobingizga o'tkazamiz."
+    },
+    "s3": {
+      "title": "Kunlik pickup",
+      "body": "Kelishilgan vaqtda kuryer do'koningizga kelib, kunlik jo'natmalarni bir yo'la olib ketadi."
+    },
+    "s4": {
+      "title": "Qadoqlash",
+      "body": "Karton, havo-pufakli plyonka va skotch bilan qadoqlaymiz. Mo'rt tovarlar uchun qo'shimcha himoya."
+    },
+    "s5": {
+      "title": "Qaytarishni boshqarish",
+      "body": "Mijoz rad etgan jo'natmani bir necha kun ushlab turamiz, so'ng sizga qaytaramiz yoki boshqa manzilga yuboramiz."
+    },
+    "s6": {
+      "title": "Sug'urta",
+      "body": "Har bir jo'natma standart tarzda sug'urtalangan. Qimmat tovarlar uchun qiymatning 1% miqdorida qo'shimcha sug'urta."
+    }
+  },
+  "pricingPage": {
+    "kicker": "Narxlar",
+    "title": "Tariflar va qo'shimcha xizmatlar",
+    "subtitle": "Barcha narxlar 1 kg gacha jo'natma uchun. Vazn oshsa, har qo'shimcha kilogramm uchun ustama qo'shiladi.",
+    "extrasTitle": "Qo'shimcha xizmatlar",
+    "service": "Xizmat",
+    "price": "Narx",
+    "pickup": "Kuryer olib ketishi (pickup)",
+    "express": "Tezkor yetkazish",
+    "expressValue": "Asosiy narxga ×1,4",
+    "return": "Qaytarish",
+    "returnValue": "Asosiy narxning 50%",
+    "insurance": "Qo'shimcha sug'urta",
+    "insuranceValue": "Tovar qiymatining 1%",
+    "packaging": "Qadoqlash (standart)",
+    "packagingValue": "Bepul",
+    "partnerKicker": "Hamkorlik",
+    "partnerText": "Oyiga 300 dan ortiq jo'natma yuborsangiz, alohida shartnoma narxi taklif qilinadi.",
+    "partnerCta": "Kalkulyatorga o'tish"
+  },
+  "partnersPage": {
+    "kicker": "Hamkor bo'lish",
+    "title": "Do'koningizni bir hafta ichida ulaymiz",
+    "subtitle": "Hamkorlik shartnomasidan birinchi jo'natmagacha odatda 3–5 ish kuni ketadi.",
+    "p1": {
+      "title": "Ariza qoldirasiz",
+      "body": "Menejer bir kun ichida qo'ng'iroq qilib, hajm va yo'nalishlarni aniqlaydi."
+    },
+    "p2": {
+      "title": "Narx kelishiladi",
+      "body": "Oyiga necha jo'natma yuborishingizga qarab tarif belgilanadi."
+    },
+    "p3": {
+      "title": "Shartnoma imzolanadi",
+      "body": "Hujjatlar onlayn imzolanadi, ombor va pickup vaqti belgilanadi."
+    },
+    "p4": {
+      "title": "Birinchi jo'natma yo'lga chiqadi",
+      "body": "Sizga shaxsiy menejer va Telegram bot ochiladi."
+    }
+  },
+  "contact": {
+    "kicker": "Aloqa",
+    "title": "Do'koningiz uchun taklif olasizmi?",
+    "subtitle": "Bir kun ichida qo'ng'iroq qilamiz va oyiga necha jo'natma yuborishingizga qarab narx taklif qilamiz.",
+    "name": "Ismingiz",
+    "phone": "Telefon",
+    "shop": "Do'kon nomi yoki havolasi",
+    "volume": "Oyiga taxminiy jo'natma soni",
+    "message": "Xabar",
+    "messagePlaceholder": "Qanday tovarlar yuborasiz?",
+    "submit": "Ariza yuborish",
+    "telegram": "Telegram",
+    "address": "Manzil",
+    "addressValue": "Toshkent, Yunusobod tumani, Amir Temur ko'chasi 108",
+    "hours": "Ish vaqti",
+    "hoursValue": "Dushanba–Shanba, 09:00–19:00"
+  },
+  "form": {
+    "sending": "Yuborilmoqda...",
+    "success": "Arizangiz qabul qilindi. Menejerimiz bir ish kuni ichida bog'lanadi.",
+    "error": "Ariza yuborilmadi. Iltimos, qaytadan urinib ko'ring yoki telefon orqali bog'laning.",
+    "requiredName": "Ismingizni kiriting",
+    "requiredPhone": "Telefon raqamingizni kiriting",
+    "invalidPhone": "Telefon raqami to'liq emas"
+  },
+  "footer": {
+    "tagline": "E-commerce uchun yetkazib berish xizmati.",
+    "rights": "Barcha huquqlar himoyalangan."
+  },
+  "regions": {
+    "tsh": "Toshkent shahri",
+    "tshv": "Toshkent viloyati",
+    "sam": "Samarqand",
+    "buh": "Buxoro",
+    "nav": "Navoiy",
+    "jiz": "Jizzax",
+    "sir": "Sirdaryo",
+    "far": "Farg'ona",
+    "and": "Andijon",
+    "nam": "Namangan",
+    "qas": "Qashqadaryo",
+    "sur": "Surxondaryo",
+    "xor": "Xorazm",
+    "qqr": "Qoraqalpog'iston"
+  },
+  "units": {
+    "kg": "kg",
+    "currency": "so'm",
+    "day": "kun",
+    "days": "kun",
+    "zoneSuffix": "-zona",
+    "none": "—"
+  },
+  "slots": {
+    "hero-bg": "Hero foni: kuryer, avtomobil yoki saralash markazi surati",
+    "band-1": "Saralash markazi: yig'ilgan jo'natmalar",
+    "band-2": "Kuryer mijozga jo'natma topshirmoqda",
+    "band-3": "Brend qadoqlash: quti va lenta",
+    "band-4": "Brend kiyimidagi jamoa",
+    "step-1": "Telegram bot yoki saytda buyurtma",
+    "step-2": "Kuryer do'kondan jo'natmani olmoqda",
+    "step-3": "Saralash markazidagi ish jarayoni",
+    "step-4": "Mijoz jo'natmani qabul qilmoqda",
+    "coverage": "Xarita yoki kuryer surati",
+    "team": "Jamoa surati yoki brendlangan avtomobil",
+    "svc-01": "Eshikkacha yetkazish jarayoni",
+    "svc-02": "To'lovni terminal orqali qabul qilish",
+    "svc-03": "Do'kondan kunlik pickup",
+    "svc-04": "Qadoqlash stoli",
+    "svc-05": "Qaytarilgan jo'natmalar javoni",
+    "svc-06": "Sug'urtalangan qimmat tovar"
+  }
+}

@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Elchi Pochta — dizayn tokenlari.
+   Qiymatlar "Elchi Pochta v2" dizaynidan aynan olingan; bu yerdan tashqarida
+   hech qayerda hex yozilmasin — komponentlar faqat shu utilitalarni ishlatadi.
+   ────────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* Brend */
+  --color-navy: #1f2853;
+  --color-navy-hover: #2b3768;
+  --color-bg: #f4f8ff;
+  --color-ink: #06060c;
+
+  /* Shrift — app/[locale]/layout.tsx dagi next/font o'zgaruvchilari.
+     Outfit lotin uchun (dizayndagi shrift), Manrope esa kirill uchun:
+     Outfit'da kirill glifi yo'q, brauzer yetishmagan harflarni keyingi
+     shriftdan oladi. Tartib muhim — Outfit birinchi turishi shart. */
+  --font-sans: var(--font-outfit-latin), var(--font-outfit-cyrillic), system-ui,
+    sans-serif;
+
+  /* Radiuslar — dizayndagi to'rt o'lcham */
+  --radius-card: 16px;
+  --radius-panel: 20px;
+  --radius-block: 28px;
+  --radius-pill: 999px;
+}
+
+/* Dizayn faqat yorug' rejada chizilgan — brauzer tungi rejani majburlamasin. */
+:root {
+  color-scheme: light;
+}
+
+@layer base {
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: --alpha(var(--color-navy) / 16%);
+  }
+
+  /* Forma elementlari: brend fokus halqasi, brauzer ko'kidan voz kechiladi */
+  input,
+  select,
+  textarea {
+    outline: none;
+  }
+
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    border-color: var(--color-navy);
+    box-shadow: 0 0 0 3px --alpha(var(--color-navy) / 14%);
+  }
+
+  input[type="checkbox"] {
+    accent-color: var(--color-navy);
+    width: 18px;
+    height: 18px;
+  }
+
+  /* FAQ akkordeoni — dizayndagi +/– belgisi */
+  details > summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] summary [data-sign]::after {
+    content: "–";
+  }
+
+  details:not([open]) summary [data-sign]::after {
+    content: "+";
+  }
+}
+
+@layer utilities {
+  /* Sahifa konteyneri — dizaynda hamma joyda 1240px / 32px */
+  .container-page {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 32px;
+    }
+  }
+
+  /* Raqamlar ustun bo'lib turganda kenglik siljimasin */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}

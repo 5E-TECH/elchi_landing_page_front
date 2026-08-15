@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; overflow-x: clip; background: #f4f8ff; font-family: "Outfit", system-ui, sans-serif; color: #06060C; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #1F2853; }
+  a:hover { color: #06060C; }
+  h1, h2, h3, h4 { margin: 0; font-weight: 800; letter-spacing: -0.03em; line-height: 1.06; }
+  p { margin: 0; }
+  input, select, textarea, button { font-family: inherit; }
+  select, input, textarea { outline: none; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: #1F2853; box-shadow: 0 0 0 3px rgba(31,40,83,0.14); }
+  details > summary { cursor: pointer; list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] summary span[data-sign]::after { content: "–"; }
+  input[type="checkbox"] { accent-color: #1F2853; width: 18px; height: 18px; }
+  ::selection { background: rgba(31,40,83,0.16); }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background: #f4f8ff; min-height: 100vh">
+
+  <header style="position: sticky; top: 0; z-index: 30; background: rgba(244,248,255,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(31,40,83,0.1)">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; gap: 36px">
+      <a href="#" onClick="{{ goHome }}" style="display: flex; align-items: center; margin-right: auto">
+        <img src="assets/elchi-lockup-trim.png" alt="Elchi Pochta" style="height: 30px; width: 91px; mix-blend-mode: multiply">
+      </a>
+      <nav style="display: flex; gap: 30px; align-items: center; font-size: 14.5px; font-weight: 600">
+        <a href="#" onClick="{{ goHome }}" style="text-decoration: none; color: {{ cHome }}">Bosh sahifa</a>
+        <a href="#" onClick="{{ goServices }}" style="text-decoration: none; color: {{ cServices }}">Xizmatlar</a>
+        <a href="#" onClick="{{ goPricing }}" style="text-decoration: none; color: {{ cPricing }}">Tariflar</a>
+        <a href="#" onClick="{{ goPartners }}" style="text-decoration: none; color: {{ cPartners }}">Hamkorlik</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 16px">
+        <div style="display: flex; gap: 2px; background: rgba(31,40,83,0.07); border-radius: 999px; padding: 3px">
+          <button onClick="{{ setUz }}" style="border: 0; cursor: pointer; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; background: {{ pillUz }}; color: {{ pillUzC }}">UZ</button>
+          <button onClick="{{ setRu }}" style="border: 0; cursor: pointer; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; background: {{ pillRu }}; color: {{ pillRuC }}">RU</button>
+          <button onClick="{{ setEn }}" style="border: 0; cursor: pointer; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; background: {{ pillEn }}; color: {{ pillEnC }}">EN</button>
+        </div>
+        <a href="#" onClick="{{ goPartners }}" style="text-decoration: none; background: #1F2853; color: #f4f8ff; font-weight: 700; font-size: 14px; padding: 11px 20px; border-radius: 999px" style-hover="background: #2b3768">Ariza qoldirish</a>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="position: relative; background: #1F2853; color: #f4f8ff; border-radius: 0 0 32px 32px; overflow: hidden; isolation: isolate">
+      <div style="position: absolute; inset: 0; z-index: 0; opacity: {{ heroBgOpacity }}">
+        <image-slot id="v2-hero-bg" shape="rect" placeholder="Hero foni: kuryer, avtomobil yoki saralash markazi surati"></image-slot>
+      </div>
+      <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; background: {{ heroOverlay }}"></div>
+      <div style="position: relative; z-index: 2; pointer-events: none; max-width: 1240px; margin: 0 auto; padding: 78px 32px 0; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(244,248,255,0.12); color: #f4f8ff; border-radius: 999px; padding: 7px 14px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.02em">E-commerce uchun pochta xizmati</div>
+          <h1 style="font-size: 60px; margin: 22px 0 20px; max-width: 17ch; text-wrap: pretty">Buyurtmangiz mijozga o'z vaqtida yetib boradi</h1>
+          <p style="font-size: 17.5px; line-height: 1.62; max-width: 52ch; color: rgba(244,248,255,0.76); font-weight: 500">Elchi Pochta — onlayn do'konlar uchun yetkazib berish xizmati. Buyurtmani sizdan olib ketamiz, O'zbekiston bo'ylab mijozga yetkazamiz va har bir qadamni ko'rsatib turamiz.</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; pointer-events: auto">
+            <a href="#kalkulyator" style="text-decoration: none; background: #f4f8ff; color: #1F2853; font-weight: 700; font-size: 15.5px; padding: 15px 26px; border-radius: 999px" style-hover="background: #ffffff">Narxni hisoblash</a>
+            <a href="#" onClick="{{ goPartners }}" style="text-decoration: none; border: 1.5px solid rgba(244,248,255,0.3); color: #f4f8ff; font-weight: 700; font-size: 15.5px; padding: 15px 26px; border-radius: 999px" style-hover="border-color: #f4f8ff">Biz bilan ishlash</a>
+          </div>
+          <div style="margin-top: 26px; font-size: 13.5px; color: rgba(244,248,255,0.55); font-weight: 500; font-variant-numeric: tabular-nums">Toshkent ichida 1 kg gacha jo'natma — 15 000 so'mdan</div>
+        </div>
+        <div style="background: #f4f8ff; color: #06060C; border-radius: 20px; padding: 28px; box-shadow: 0 24px 60px rgba(6,6,12,0.28); pointer-events: auto">
+          <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.02em">Jo'natmani kuzatish</div>
+          <p style="font-size: 13.5px; color: rgba(6,6,12,0.55); margin-top: 8px; line-height: 1.55; font-weight: 500">Jo'natma ID raqamini kiriting va holatini ko'ring.</p>
+          <div style="display: flex; gap: 8px; margin-top: 18px">
+            <input value="{{ trackId }}" onChange="{{ setTrackId }}" placeholder="EP-000000" style="flex: 1; border: 1.5px solid rgba(31,40,83,0.16); border-radius: 999px; padding: 12px 18px; font-size: 14.5px; font-weight: 600; letter-spacing: 0.04em; background: #fff">
+            <button onClick="{{ track }}" style="border: 0; cursor: pointer; background: #1F2853; color: #f4f8ff; font-weight: 700; font-size: 14px; padding: 12px 22px; border-radius: 999px">Kuzatish</button>
+          </div>
+          <sc-if value="{{ tracked }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top: 22px; border-top: 1px solid rgba(31,40,83,0.1); padding-top: 20px; display: grid; gap: 16px">
+              <div style="display: flex; gap: 14px; align-items: flex-start">
+                <div style="width: 10px; height: 10px; border-radius: 999px; background: #1F2853; margin-top: 5px; flex: none"></div>
+                <div><div style="font-size: 14px; font-weight: 700">Qabul qilindi</div><div style="font-size: 12.5px; color: rgba(6,6,12,0.5); font-weight: 500; display: flex; gap: 6px"><span>Toshkent shahri</span><span>·</span><span>09:42</span></div></div>
+              </div>
+              <div style="display: flex; gap: 14px; align-items: flex-start">
+                <div style="width: 10px; height: 10px; border-radius: 999px; background: #1F2853; margin-top: 5px; flex: none"></div>
+                <div><div style="font-size: 14px; font-weight: 700">Saralash markazida</div><div style="font-size: 12.5px; color: rgba(6,6,12,0.5); font-weight: 500; display: flex; gap: 6px"><span>Toshkent shahri</span><span>·</span><span>14:10</span></div></div>
+              </div>
+              <div style="display: flex; gap: 14px; align-items: flex-start">
+                <div style="width: 10px; height: 10px; border-radius: 999px; background: #f4f8ff; border: 2.5px solid #1F2853; margin-top: 4px; flex: none"></div>
+                <div><div style="font-size: 14px; font-weight: 700">Yo'lda</div><div style="font-size: 12.5px; color: rgba(6,6,12,0.5); font-weight: 500; display: flex; gap: 6px"><span>Samarqand</span><span>·</span><span>bugun kutilmoqda</span></div></div>
+              </div>
+              <div style="font-size: 11.5px; color: rgba(6,6,12,0.4); font-weight: 600">Namuna ma'lumot</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="position: relative; z-index: 2; pointer-events: none; max-width: 1240px; margin: 0 auto; padding: 64px 32px 56px">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(244,248,255,0.14); border-radius: 18px; overflow: hidden; pointer-events: auto">
+          <div style="background: rgba(31,40,83,0.72); backdrop-filter: blur(8px); padding: 26px 24px">
+            <div style="font-size: 38px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums">14</div>
+            <div style="font-size: 12.5px; margin-top: 6px; color: rgba(244,248,255,0.6); font-weight: 600">O'zbekiston bo'ylab qamrov</div>
+          </div>
+          <div style="background: rgba(31,40,83,0.72); backdrop-filter: blur(8px); padding: 26px 24px">
+            <div style="font-size: 38px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums">1–3</div>
+            <div style="font-size: 12.5px; margin-top: 6px; color: rgba(244,248,255,0.6); font-weight: 600">Yetkazib berish muddati</div>
+          </div>
+          <div style="background: rgba(31,40,83,0.72); backdrop-filter: blur(8px); padding: 26px 24px">
+            <div style="font-size: 38px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums">98%</div>
+            <div style="font-size: 12.5px; margin-top: 6px; color: rgba(244,248,255,0.6); font-weight: 600">O'z vaqtida yetkazilgan jo'natmalar</div>
+          </div>
+          <div style="background: rgba(31,40,83,0.72); backdrop-filter: blur(8px); padding: 26px 24px">
+            <div style="font-size: 38px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums">24/7</div>
+            <div style="font-size: 12.5px; margin-top: 6px; color: rgba(244,248,255,0.6); font-weight: 600">Qo'llab-quvvatlash xizmati</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 1240px; margin: 0 auto; padding: 40px 32px 0">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; height: 340px">
+        <div style="border-radius: 20px; overflow: hidden; background: rgba(31,40,83,0.06)">
+          <image-slot id="v2-band-1" shape="rect" placeholder="Saralash markazi: yig'ilgan jo'natmalar"></image-slot>
+        </div>
+        <div style="border-radius: 20px; overflow: hidden; background: rgba(31,40,83,0.06)">
+          <image-slot id="v2-band-2" shape="rect" placeholder="Kuryer mijozga jo'natma topshirmoqda"></image-slot>
+        </div>
+        <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 12px">
+          <div style="border-radius: 20px; overflow: hidden; background: rgba(31,40,83,0.06)">
+            <image-slot id="v2-band-3" shape="rect" placeholder="Brend qadoqlash: quti va lenta"></image-slot>
+          </div>
+          <div style="border-radius: 20px; overflow: hidden; background: rgba(31,40,83,0.06)">
+            <image-slot id="v2-band-4" shape="rect" placeholder="Brend kiyimidagi jamoa"></image-slot>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px; font-size: 12.5px; font-weight: 600; color: rgba(6,6,12,0.45)">Elchi Pochta jamoasi va saralash markazi, Toshkent</div>
+    </section>
+
+    <section style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 0">
+      <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Xizmatlar</div>
+      <h2 style="font-size: 42px; margin: 16px 0 40px; max-width: 24ch">Onlayn savdo uchun kerak bo'ladigan hamma narsa</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px">
+        <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 28px">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(31,40,83,0.08); color: #1F2853; display: grid; place-items: center; font-weight: 800; font-size: 15px">01</div>
+          <h3 style="font-size: 22px; margin: 20px 0 10px">Buyurtmalarni yetkazish</h3>
+          <p style="font-size: 14.5px; line-height: 1.62; color: rgba(6,6,12,0.62); font-weight: 500">Mijoz manziliga eshikkacha yetkazamiz. Naqd yoki karta orqali to'lovni qabul qilib, pulni sizga o'tkazamiz.</p>
+        </div>
+        <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 28px">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(31,40,83,0.08); color: #1F2853; display: grid; place-items: center; font-weight: 800; font-size: 15px">02</div>
+          <h3 style="font-size: 22px; margin: 20px 0 10px">Kuryer olib ketishi</h3>
+          <p style="font-size: 14.5px; line-height: 1.62; color: rgba(6,6,12,0.62); font-weight: 500">Do'koningizdan yoki omboringizdan jo'natmalarni belgilangan vaqtda o'zimiz olib ketamiz.</p>
+        </div>
+        <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 28px">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(31,40,83,0.08); color: #1F2853; display: grid; place-items: center; font-weight: 800; font-size: 15px">03</div>
+          <h3 style="font-size: 22px; margin: 20px 0 10px">Qaytarish va almashtirish</h3>
+          <p style="font-size: 14.5px; line-height: 1.62; color: rgba(6,6,12,0.62); font-weight: 500">Mijoz tovarni qaytarsa yoki almashtirsa, biz uni sizga bepul olib kelamiz.</p>
+        </div>
+      </div>
+      <div style="margin-top: 22px"><a href="#" onClick="{{ goServices }}" style="font-size: 14.5px; font-weight: 700; text-decoration: none">Barcha xizmatlar →</a></div>
+    </section>
+
+    <section id="kalkulyator" style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 0">
+      <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Kalkulyator</div>
+      <h2 style="font-size: 42px; margin: 16px 0 12px">Yetkazib berish narxini hisoblang</h2>
+      <p style="font-size: 16.5px; color: rgba(6,6,12,0.6); font-weight: 500; max-width: 54ch; margin-bottom: 36px">O'lcham, hajm va vaznni kiriting — narx darhol chiqadi.</p>
+
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: start">
+        <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 20px; padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(6,6,12,0.55); margin-bottom: 7px">Qayerdan</label>
+            <select value="{{ from }}" onChange="{{ setFrom }}" style="width: 100%; border: 1.5px solid rgba(31,40,83,0.16); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600; background: #fff; color: #06060C">
+              <option value="tsh">Toshkent shahri</option>
+              <option value="tshv">Toshkent viloyati</option>
+              <option value="sam">Samarqand</option>
+              <option value="buh">Buxoro</option>
+              <option value="nav">Navoiy</option>
+              <option value="jiz">Jizzax</option>
+              <option value="sir">Sirdaryo</option>
+              <option value="far">Farg'ona</option>
+              <option value="and">Andijon</option>
+              <option value="nam">Namangan</option>
+              <option value="qas">Qashqadaryo</option>
+              <option value="sur">Surxondaryo</option>
+              <option value="xor">Xorazm</option>
+              <option value="qqr">Qoraqalpog'iston</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(6,6,12,0.55); margin-bottom: 7px">Qayerga</label>
+            <select value="{{ to }}" onChange="{{ setTo }}" style="width: 100%; border: 1.5px solid rgba(31,40,83,0.16); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600; background: #fff; color: #06060C">
+              <option value="tsh">Toshkent shahri</option>
+              <option value="tshv">Toshkent viloyati</option>
+              <option value="sam">Samarqand</option>
+              <option value="buh">Buxoro</option>
+              <option value="nav">Navoiy</option>
+              <option value="jiz">Jizzax</option>
+              <option value="sir">Sirdaryo</option>
+              <option value="far">Farg'ona</option>
+              <option value="and">Andijon</option>
+              <option value="nam">Namangan</option>
+              <option value="qas">Qashqadaryo</option>
+              <option value="sur">Surxondaryo</option>
+              <option value="xor">Xorazm</option>
+              <option value="qqr">Qoraqalpog'iston</option>
+            </select>
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(6,6,12,0.55); margin-bottom: 7px">Vazn (kg)</label>
+            <input type="number" min="0.1" step="0.1" value="{{ weight }}" onChange="{{ setWeight }}" style="width: 100%; border: 1.5px solid rgba(31,40,83,0.16); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600; background: #fff">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(6,6,12,0.55); margin-bottom: 7px">Uzunlik (sm)</label>
+            <input type="number" min="1" step="1" value="{{ len }}" onChange="{{ setLen }}" style="width: 100%; border: 1.5px solid rgba(31,40,83,0.16); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600; background: #fff">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(6,6,12,0.55); margin-bottom: 7px">Kenglik (sm)</label>
+            <input type="number" min="1" step="1" value="{{ wid }}" onChange="{{ setWid }}" style="width: 100%; border: 1.5px solid rgba(31,40,83,0.16); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600; background: #fff">
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(6,6,12,0.55); margin-bottom: 7px">Balandlik (sm)</label>
+            <input type="number" min="1" step="1" value="{{ hei }}" onChange="{{ setHei }}" style="width: 100%; border: 1.5px solid rgba(31,40,83,0.16); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600; background: #fff">
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(6,6,12,0.55); margin-bottom: 7px">Yetkazish turi</label>
+            <div style="display: flex; gap: 3px; background: rgba(31,40,83,0.07); border-radius: 999px; padding: 4px">
+              <button onClick="{{ setStandard }}" style="flex: 1; border: 0; cursor: pointer; border-radius: 999px; padding: 10px; font-size: 14px; font-weight: 700; background: {{ pillStd }}; color: {{ pillStdC }}">Oddiy</button>
+              <button onClick="{{ setExpress }}" style="flex: 1; border: 0; cursor: pointer; border-radius: 999px; padding: 10px; font-size: 14px; font-weight: 700; background: {{ pillExp }}; color: {{ pillExpC }}">Tezkor</button>
+            </div>
+          </div>
+          <label style="grid-column: 1 / -1; display: flex; align-items: center; gap: 11px; font-size: 14.5px; font-weight: 600; cursor: pointer">
+            <input type="checkbox" checked="{{ pickup }}" onChange="{{ togglePickup }}">
+            Kuryer manzilimdan olib ketsin
+          </label>
+          <p style="grid-column: 1 / -1; font-size: 12.5px; line-height: 1.6; color: rgba(6,6,12,0.45); font-weight: 500">Hajmli vazn = uzunlik × kenglik × balandlik ÷ 5000. Narx haqiqiy va hajmli vaznning kattasidan hisoblanadi.</p>
+        </div>
+
+        <div style="background: #1F2853; color: #f4f8ff; border-radius: 20px; padding: 30px">
+          <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,248,255,0.5)">Hisob-kitob</div>
+          <div style="font-size: 44px; font-weight: 800; letter-spacing: -0.03em; margin: 14px 0 4px; color: #f4f8ff; font-variant-numeric: tabular-nums">{{ totalText }}</div>
+          <div style="font-size: 13.5px; color: rgba(244,248,255,0.6); font-weight: 600">{{ routeText }}</div>
+          <div style="height: 1px; background: rgba(244,248,255,0.16); margin: 24px 0"></div>
+          <div style="display: grid; gap: 10px; font-size: 13.5px; font-weight: 600; font-variant-numeric: tabular-nums">
+            <div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: rgba(244,248,255,0.6)">Haqiqiy vazn</span><span>{{ actualText }}</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: rgba(244,248,255,0.6)">Hajmli vazn</span><span>{{ volText }}</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: rgba(244,248,255,0.6)">Hisoblanadigan vazn</span><span style="color: #ffffff">{{ billableText }}</span></div>
+          </div>
+          <div style="height: 1px; background: rgba(244,248,255,0.16); margin: 20px 0"></div>
+          <div style="display: grid; gap: 10px; font-size: 13.5px; font-weight: 600; font-variant-numeric: tabular-nums">
+            <div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: rgba(244,248,255,0.6)">Asosiy narx</span><span>{{ baseText }}</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: rgba(244,248,255,0.6)">Qo'shimcha vazn</span><span>{{ extraText }}</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: rgba(244,248,255,0.6)">Tezkor yetkazish</span><span>{{ expressText }}</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: rgba(244,248,255,0.6)">Kuryer olib ketishi</span><span>{{ pickupText }}</span></div>
+          </div>
+          <div style="height: 1px; background: rgba(244,248,255,0.16); margin: 20px 0"></div>
+          <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums"><span>Jami</span><span>{{ totalText }}</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; margin-top: 10px; font-weight: 600; color: rgba(244,248,255,0.6)"><span>Yetkazib berish muddati</span><span>{{ daysText }}</span></div>
+          <a href="#" onClick="{{ goPartners }}" style="display: block; text-align: center; text-decoration: none; margin-top: 24px; background: #f4f8ff; color: #1F2853; font-weight: 700; font-size: 15px; padding: 14px; border-radius: 999px" style-hover="background: #ffffff">Ariza qoldirish</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 0">
+      <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Qanday ishlaydi</div>
+      <h2 style="font-size: 42px; margin: 16px 0 40px">To'rt qadam, ortiqcha tashvish yo'q</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px">
+        <div>
+          <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: rgba(31,40,83,0.06); margin-bottom: 18px">
+            <image-slot id="v2-step-1" shape="rect" placeholder="Telegram bot yoki saytda buyurtma"></image-slot>
+          </div>
+          <div style="width: 44px; height: 44px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 17px">1</div>
+          <h4 style="font-size: 19px; margin: 18px 0 9px">Buyurtmani ro'yxatdan o'tkazasiz</h4>
+          <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Saytda yoki Telegram bot orqali jo'natma ma'lumotlarini kiritasiz.</p>
+        </div>
+        <div>
+          <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: rgba(31,40,83,0.06); margin-bottom: 18px">
+            <image-slot id="v2-step-2" shape="rect" placeholder="Kuryer do'kondan jo'natmani olmoqda"></image-slot>
+          </div>
+          <div style="width: 44px; height: 44px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 17px">2</div>
+          <h4 style="font-size: 19px; margin: 18px 0 9px">Kuryer olib ketadi</h4>
+          <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Belgilangan vaqtda kuryer keladi va jo'natmani qabul qiladi.</p>
+        </div>
+        <div>
+          <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: rgba(31,40,83,0.06); margin-bottom: 18px">
+            <image-slot id="v2-step-3" shape="rect" placeholder="Saralash markazidagi ish jarayoni"></image-slot>
+          </div>
+          <div style="width: 44px; height: 44px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 17px">3</div>
+          <h4 style="font-size: 19px; margin: 18px 0 9px">Saralash markazidan o'tadi</h4>
+          <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Jo'natma yo'nalish bo'yicha saralanadi va yo'lga chiqadi.</p>
+        </div>
+        <div>
+          <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: rgba(31,40,83,0.06); margin-bottom: 18px">
+            <image-slot id="v2-step-4" shape="rect" placeholder="Mijoz jo'natmani qabul qilmoqda"></image-slot>
+          </div>
+          <div style="width: 44px; height: 44px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 17px">4</div>
+          <h4 style="font-size: 19px; margin: 18px 0 9px">Mijozga yetkaziladi</h4>
+          <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Kuryer to'lovni qabul qiladi, siz esa holatni real vaqtda ko'rasiz.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 0">
+      <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: start">
+        <div>
+          <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Qamrov</div>
+          <h2 style="font-size: 40px; margin: 16px 0 14px">O'zbekiston bo'ylab, to'rt zonada</h2>
+          <p style="font-size: 15.5px; line-height: 1.65; color: rgba(6,6,12,0.6); font-weight: 500; margin-bottom: 24px">Har bir hudud zonaga bo'lingan. Zona narx va muddatni belgilaydi.</p>
+          <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3">
+            <image-slot id="v2-coverage" shape="rect" placeholder="Xarita yoki kuryer surati"></image-slot>
+          </div>
+        </div>
+        <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 20px; overflow: hidden">
+          <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 16px 22px; background: rgba(31,40,83,0.05); font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(6,6,12,0.5)">
+            <div>Zona</div><div>Hududlar</div><div style="text-align: right">1 kg gacha, so'm</div><div style="text-align: right">Har qo'shimcha kg, so'm</div><div style="text-align: right">Muddat</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+            <div style="color: #1F2853; font-weight: 800">1-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500">Toshkent shahri ichida</div><div style="text-align: right">15 000</div><div style="text-align: right">2 500</div><div style="text-align: right; white-space: nowrap">1 kun</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+            <div style="color: #1F2853; font-weight: 800">2-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500">Toshkent viloyati</div><div style="text-align: right">20 000</div><div style="text-align: right">3 000</div><div style="text-align: right; white-space: nowrap">1 kun</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+            <div style="color: #1F2853; font-weight: 800">3-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500; line-height: 1.5">Samarqand, Buxoro, Navoiy, Jizzax, Sirdaryo, Farg'ona, Andijon, Namangan, Qashqadaryo</div><div style="text-align: right">27 000</div><div style="text-align: right">4 000</div><div style="text-align: right; white-space: nowrap">1–2 kun</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+            <div style="color: #1F2853; font-weight: 800">4-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500">Surxondaryo, Xorazm, Qoraqalpog'iston</div><div style="text-align: right">34 000</div><div style="text-align: right">5 000</div><div style="text-align: right; white-space: nowrap">2–3 kun</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 1240px; margin: 88px auto 0; padding: 0 32px">
+      <div style="background: #1F2853; color: #f4f8ff; border-radius: 28px; padding: 56px 48px">
+        <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,248,255,0.6)">Nega Elchi Pochta</div>
+        <h2 style="font-size: 40px; margin: 16px 0 40px">Kichik jamoa, katta e'tibor</h2>
+        <div style="border-radius: 20px; overflow: hidden; height: 300px; background: rgba(244,248,255,0.08); margin-bottom: 40px">
+          <image-slot id="v2-team" shape="rect" placeholder="Jamoa surati yoki brendlangan avtomobil"></image-slot>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px 48px">
+          <div style="border-top: 1px solid rgba(244,248,255,0.2); padding-top: 20px">
+            <h4 style="font-size: 21px; margin-bottom: 10px">Har bir mijozni bilamiz</h4>
+            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(244,248,255,0.68); font-weight: 500">Biz hozircha kichikmiz — shuning uchun har bir do'kon bilan alohida ishlaymiz va muammoni bir kunda hal qilamiz.</p>
+          </div>
+          <div style="border-top: 1px solid rgba(244,248,255,0.2); padding-top: 20px">
+            <h4 style="font-size: 21px; margin-bottom: 10px">Shaffof narx</h4>
+            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(244,248,255,0.68); font-weight: 500">Yashirin to'lov yo'q. Kalkulyator ko'rsatgan narx — yakuniy narx.</p>
+          </div>
+          <div style="border-top: 1px solid rgba(244,248,255,0.2); padding-top: 20px">
+            <h4 style="font-size: 21px; margin-bottom: 10px">Jo'natma uchun javob beramiz</h4>
+            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(244,248,255,0.68); font-weight: 500">Har bir jo'natma sug'urtalangan. Zarar yetsa, tovar qiymatini qoplaymiz.</p>
+          </div>
+          <div style="border-top: 1px solid rgba(244,248,255,0.2); padding-top: 20px">
+            <h4 style="font-size: 21px; margin-bottom: 10px">Telegram orqali ishlash</h4>
+            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(244,248,255,0.68); font-weight: 500">Ariza berish, kuzatish va hisobot — hammasi bot ichida.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 0">
+      <div style="display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 48px; align-items: start">
+        <div>
+          <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Savol-javob</div>
+          <h2 style="font-size: 38px; margin-top: 16px">Ko'p so'raladigan savollar</h2>
+        </div>
+        <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 20px; padding: 8px 26px">
+          <details style="border-bottom: 1px solid rgba(31,40,83,0.08); padding: 20px 0">
+            <summary style="display: flex; justify-content: space-between; gap: 20px; font-size: 17.5px; font-weight: 700; letter-spacing: -0.01em">Eng kichik buyurtma hajmi qancha?<span data-sign="1" style="color: #1F2853; font-weight: 800">+</span></summary>
+            <p style="font-size: 14.5px; line-height: 1.65; margin-top: 12px; color: rgba(6,6,12,0.62); font-weight: 500; max-width: 62ch">Chegara yo'q. Bir kunda bitta jo'natma bo'lsa ham qabul qilamiz.</p>
+          </details>
+          <details style="border-bottom: 1px solid rgba(31,40,83,0.08); padding: 20px 0">
+            <summary style="display: flex; justify-content: space-between; gap: 20px; font-size: 17.5px; font-weight: 700; letter-spacing: -0.01em">To'lovni mijozdan olasizmi?<span data-sign="1" style="color: #1F2853; font-weight: 800">+</span></summary>
+            <p style="font-size: 14.5px; line-height: 1.65; margin-top: 12px; color: rgba(6,6,12,0.62); font-weight: 500; max-width: 62ch">Ha. Kuryer naqd yoki karta orqali to'lovni qabul qiladi, pul 1–2 ish kunida hisobingizga tushadi.</p>
+          </details>
+          <details style="border-bottom: 1px solid rgba(31,40,83,0.08); padding: 20px 0">
+            <summary style="display: flex; justify-content: space-between; gap: 20px; font-size: 17.5px; font-weight: 700; letter-spacing: -0.01em">Jo'natmani qanday kuzataman?<span data-sign="1" style="color: #1F2853; font-weight: 800">+</span></summary>
+            <p style="font-size: 14.5px; line-height: 1.65; margin-top: 12px; color: rgba(6,6,12,0.62); font-weight: 500; max-width: 62ch">Har bir jo'natmaga ID beriladi. Saytda yoki botda ID orqali holatni ko'rasiz.</p>
+          </details>
+          <details style="border-bottom: 1px solid rgba(31,40,83,0.08); padding: 20px 0">
+            <summary style="display: flex; justify-content: space-between; gap: 20px; font-size: 17.5px; font-weight: 700; letter-spacing: -0.01em">Mo'rt tovarlarni yetkazasizmi?<span data-sign="1" style="color: #1F2853; font-weight: 800">+</span></summary>
+            <p style="font-size: 14.5px; line-height: 1.65; margin-top: 12px; color: rgba(6,6,12,0.62); font-weight: 500; max-width: 62ch">Ha, maxsus qadoqlash bilan. Buyurtma berishda «mo'rt» belgisini qo'yish kifoya.</p>
+          </details>
+          <details style="padding: 20px 0">
+            <summary style="display: flex; justify-content: space-between; gap: 20px; font-size: 17.5px; font-weight: 700; letter-spacing: -0.01em">Shartnoma kerakmi?<span data-sign="1" style="color: #1F2853; font-weight: 800">+</span></summary>
+            <p style="font-size: 14.5px; line-height: 1.65; margin-top: 12px; color: rgba(6,6,12,0.62); font-weight: 500; max-width: 62ch">Doimiy hamkorlik uchun — ha. Bir martalik jo'natma uchun shartnoma shart emas.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1240px; margin: 0 auto; padding: 72px 32px 0">
+    <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Xizmatlarimiz</div>
+    <h1 style="font-size: 54px; margin: 18px 0 18px; max-width: 26ch">Onlayn do'kon uchun yetkazib berishning to'liq aylanishi</h1>
+    <p style="font-size: 17px; line-height: 1.62; max-width: 58ch; color: rgba(6,6,12,0.6); font-weight: 500; margin-bottom: 44px">Quyidagi xizmatlarni alohida yoki birgalikda olishingiz mumkin. Ko'pchilik do'konlar birinchi ikkitasidan boshlaydi.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 30px">
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: rgba(31,40,83,0.06); margin-bottom: 20px">
+          <image-slot id="v2-svc-01" shape="rect" placeholder="Eshikkacha yetkazish jarayoni"></image-slot>
+        </div>
+        <div style="font-size: 12px; font-weight: 800; color: #1F2853; letter-spacing: 0.08em">01</div>
+        <h3 style="font-size: 25px; margin: 12px 0 10px">Eshikkacha yetkazish</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: rgba(6,6,12,0.62); font-weight: 500">Kuryer jo'natmani mijozning qo'liga topshiradi. Mijoz uyda bo'lmasa, qo'ng'iroq qilib qayta kelamiz — qo'shimcha to'lovsiz.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 30px">
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: rgba(31,40,83,0.06); margin-bottom: 20px">
+          <image-slot id="v2-svc-02" shape="rect" placeholder="To'lovni terminal orqali qabul qilish"></image-slot>
+        </div>
+        <div style="font-size: 12px; font-weight: 800; color: #1F2853; letter-spacing: 0.08em">02</div>
+        <h3 style="font-size: 25px; margin: 12px 0 10px">Naqd to'lovni yig'ish</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: rgba(6,6,12,0.62); font-weight: 500">Tovar qiymatini mijozdan naqd yoki karta orqali olamiz va 1–2 ish kunida hisobingizga o'tkazamiz.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 30px">
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: rgba(31,40,83,0.06); margin-bottom: 20px">
+          <image-slot id="v2-svc-03" shape="rect" placeholder="Do'kondan kunlik pickup"></image-slot>
+        </div>
+        <div style="font-size: 12px; font-weight: 800; color: #1F2853; letter-spacing: 0.08em">03</div>
+        <h3 style="font-size: 25px; margin: 12px 0 10px">Kunlik pickup</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: rgba(6,6,12,0.62); font-weight: 500">Kelishilgan vaqtda kuryer do'koningizga kelib, kunlik jo'natmalarni bir yo'la olib ketadi.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 30px">
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: rgba(31,40,83,0.06); margin-bottom: 20px">
+          <image-slot id="v2-svc-04" shape="rect" placeholder="Qadoqlash stoli"></image-slot>
+        </div>
+        <div style="font-size: 12px; font-weight: 800; color: #1F2853; letter-spacing: 0.08em">04</div>
+        <h3 style="font-size: 25px; margin: 12px 0 10px">Qadoqlash</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: rgba(6,6,12,0.62); font-weight: 500">Karton, havo-pufakli plyonka va skotch bilan qadoqlaymiz. Mo'rt tovarlar uchun qo'shimcha himoya.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 30px">
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: rgba(31,40,83,0.06); margin-bottom: 20px">
+          <image-slot id="v2-svc-05" shape="rect" placeholder="Qaytarilgan jo'natmalar javoni"></image-slot>
+        </div>
+        <div style="font-size: 12px; font-weight: 800; color: #1F2853; letter-spacing: 0.08em">05</div>
+        <h3 style="font-size: 25px; margin: 12px 0 10px">Qaytarishni boshqarish</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: rgba(6,6,12,0.62); font-weight: 500">Mijoz rad etgan jo'natmani bir necha kun ushlab turamiz, so'ng sizga qaytaramiz yoki boshqa manzilga yuboramiz.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 30px">
+        <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: rgba(31,40,83,0.06); margin-bottom: 20px">
+          <image-slot id="v2-svc-06" shape="rect" placeholder="Sug'urtalangan qimmat tovar"></image-slot>
+        </div>
+        <div style="font-size: 12px; font-weight: 800; color: #1F2853; letter-spacing: 0.08em">06</div>
+        <h3 style="font-size: 25px; margin: 12px 0 10px">Sug'urta</h3>
+        <p style="font-size: 15px; line-height: 1.65; color: rgba(6,6,12,0.62); font-weight: 500">Har bir jo'natma standart tarzda sug'urtalangan. Qimmat tovarlar uchun qiymatning 1% miqdorida qo'shimcha sug'urta.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 12px; margin-top: 40px">
+      <a href="#" onClick="{{ goPricing }}" style="text-decoration: none; background: #1F2853; color: #f4f8ff; font-weight: 700; font-size: 15px; padding: 14px 24px; border-radius: 999px">Tariflar</a>
+      <a href="#" onClick="{{ goPartners }}" style="text-decoration: none; border: 1.5px solid rgba(31,40,83,0.2); color: #1F2853; font-weight: 700; font-size: 15px; padding: 14px 24px; border-radius: 999px">Ariza qoldirish</a>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isPricing }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1240px; margin: 0 auto; padding: 72px 32px 0">
+    <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Narxlar</div>
+    <h1 style="font-size: 54px; margin: 18px 0 18px">Tariflar va qo'shimcha xizmatlar</h1>
+    <p style="font-size: 17px; line-height: 1.62; max-width: 60ch; color: rgba(6,6,12,0.6); font-weight: 500; margin-bottom: 40px">Barcha narxlar 1 kg gacha jo'natma uchun. Vazn oshsa, har qo'shimcha kilogramm uchun ustama qo'shiladi.</p>
+    <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 20px; overflow: hidden; margin-bottom: 56px">
+      <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 16px 22px; background: rgba(31,40,83,0.05); font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(6,6,12,0.5)">
+        <div>Zona</div><div>Hududlar</div><div style="text-align: right">1 kg gacha, so'm</div><div style="text-align: right">Har qo'shimcha kg, so'm</div><div style="text-align: right">Muddat</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+        <div style="color: #1F2853; font-weight: 800">1-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500">Toshkent shahri ichida</div><div style="text-align: right">15 000</div><div style="text-align: right">2 500</div><div style="text-align: right; white-space: nowrap">1 kun</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+        <div style="color: #1F2853; font-weight: 800">2-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500">Toshkent viloyati</div><div style="text-align: right">20 000</div><div style="text-align: right">3 000</div><div style="text-align: right; white-space: nowrap">1 kun</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+        <div style="color: #1F2853; font-weight: 800">3-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500; line-height: 1.5">Samarqand, Buxoro, Navoiy, Jizzax, Sirdaryo, Farg'ona, Andijon, Namangan, Qashqadaryo</div><div style="text-align: right">27 000</div><div style="text-align: right">4 000</div><div style="text-align: right; white-space: nowrap">1–2 kun</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 0.7fr 2fr 1fr 1fr 0.8fr; gap: 12px; padding: 20px 22px; border-top: 1px solid rgba(31,40,83,0.08); font-size: 14px; font-weight: 600; align-items: center; font-variant-numeric: tabular-nums">
+        <div style="color: #1F2853; font-weight: 800">4-zona</div><div style="color: rgba(6,6,12,0.65); font-weight: 500">Surxondaryo, Xorazm, Qoraqalpog'iston</div><div style="text-align: right">34 000</div><div style="text-align: right">5 000</div><div style="text-align: right; white-space: nowrap">2–3 kun</div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: start">
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 20px; padding: 30px">
+        <h3 style="font-size: 25px; margin-bottom: 20px">Qo'shimcha xizmatlar</h3>
+        <div style="display: grid; gap: 0; font-size: 14.5px; font-weight: 600; font-variant-numeric: tabular-nums">
+          <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(31,40,83,0.08)"><span style="font-weight: 500; color: rgba(6,6,12,0.7)">Kuryer olib ketishi (pickup)</span><span>8 000</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(31,40,83,0.08)"><span style="font-weight: 500; color: rgba(6,6,12,0.7)">Tezkor yetkazish</span><span>Asosiy narxga ×1,4</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(31,40,83,0.08)"><span style="font-weight: 500; color: rgba(6,6,12,0.7)">Qaytarish</span><span>Asosiy narxning 50%</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(31,40,83,0.08)"><span style="font-weight: 500; color: rgba(6,6,12,0.7)">Qo'shimcha sug'urta</span><span>Tovar qiymatining 1%</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 0"><span style="font-weight: 500; color: rgba(6,6,12,0.7)">Qadoqlash (standart)</span><span style="color: #1F2853">Bepul</span></div>
+        </div>
+      </div>
+      <div style="background: #1F2853; color: #f4f8ff; border-radius: 20px; padding: 30px">
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,248,255,0.6)">Hamkorlik</div>
+        <p style="font-size: 15px; line-height: 1.65; margin: 16px 0 24px; color: rgba(244,248,255,0.72); font-weight: 500">Oyiga 300 dan ortiq jo'natma yuborsangiz, alohida shartnoma narxi taklif qilinadi.</p>
+        <a href="#" onClick="{{ goHomeCalc }}" style="display: inline-block; text-decoration: none; background: #f4f8ff; color: #1F2853; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px" style-hover="background: #ffffff">Kalkulyatorga o'tish</a>
+      </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isPartners }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1240px; margin: 0 auto; padding: 72px 32px 0">
+    <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1F2853">Hamkor bo'lish</div>
+    <h1 style="font-size: 54px; margin: 18px 0 18px">Do'koningizni bir hafta ichida ulaymiz</h1>
+    <p style="font-size: 17px; line-height: 1.62; max-width: 56ch; color: rgba(6,6,12,0.6); font-weight: 500; margin-bottom: 48px">Hamkorlik shartnomasidan birinchi jo'natmagacha odatda 3–5 ish kuni ketadi.</p>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 64px">
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 26px">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 16px">1</div>
+        <h4 style="font-size: 19px; margin: 16px 0 9px">Ariza qoldirasiz</h4>
+        <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Menejer bir kun ichida qo'ng'iroq qilib, hajm va yo'nalishlarni aniqlaydi.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 26px">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 16px">2</div>
+        <h4 style="font-size: 19px; margin: 16px 0 9px">Narx kelishiladi</h4>
+        <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Oyiga necha jo'natma yuborishingizga qarab tarif belgilanadi.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 26px">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 16px">3</div>
+        <h4 style="font-size: 19px; margin: 16px 0 9px">Shartnoma imzolanadi</h4>
+        <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Hujjatlar onlayn imzolanadi, ombor va pickup vaqti belgilanadi.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid rgba(31,40,83,0.1); border-radius: 16px; padding: 26px">
+        <div style="width: 40px; height: 40px; border-radius: 999px; background: #1F2853; color: #f4f8ff; display: grid; place-items: center; font-weight: 800; font-size: 16px">4</div>
+        <h4 style="font-size: 19px; margin: 16px 0 9px">Birinchi jo'natma yo'lga chiqadi</h4>
+        <p style="font-size: 14px; line-height: 1.6; color: rgba(6,6,12,0.6); font-weight: 500">Sizga shaxsiy menejer va Telegram bot ochiladi.</p>
+      </div>
+    </div>
+
+    <div id="aloqa" style="background: #1F2853; color: #f4f8ff; border-radius: 28px; padding: 48px; display: grid; grid-template-columns: 1fr 0.75fr; gap: 56px; align-items: start">
+      <div>
+        <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,248,255,0.6)">Aloqa</div>
+        <h2 style="font-size: 36px; margin: 16px 0 14px">Do'koningiz uchun taklif olasizmi?</h2>
+        <p style="font-size: 15.5px; line-height: 1.65; max-width: 52ch; color: rgba(244,248,255,0.7); font-weight: 500; margin-bottom: 30px">Bir kun ichida qo'ng'iroq qilamiz va oyiga necha jo'natma yuborishingizga qarab narx taklif qilamiz.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(244,248,255,0.6); margin-bottom: 7px">Ismingiz</label>
+            <input type="text" placeholder="Aziz Karimov" style="width: 100%; border: 1.5px solid rgba(244,248,255,0.22); background: rgba(244,248,255,0.06); color: #f4f8ff; border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(244,248,255,0.6); margin-bottom: 7px">Telefon</label>
+            <input type="tel" placeholder="+998 90 123 45 67" style="width: 100%; border: 1.5px solid rgba(244,248,255,0.22); background: rgba(244,248,255,0.06); color: #f4f8ff; border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(244,248,255,0.6); margin-bottom: 7px">Do'kon nomi yoki havolasi</label>
+            <input type="text" placeholder="instagram.com/mydokon" style="width: 100%; border: 1.5px solid rgba(244,248,255,0.22); background: rgba(244,248,255,0.06); color: #f4f8ff; border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(244,248,255,0.6); margin-bottom: 7px">Oyiga taxminiy jo'natma soni</label>
+            <input type="number" placeholder="120" style="width: 100%; border: 1.5px solid rgba(244,248,255,0.22); background: rgba(244,248,255,0.06); color: #f4f8ff; border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600">
+          </div>
+          <div style="grid-column: 1 / -1">
+            <label style="display: block; font-size: 12.5px; font-weight: 700; color: rgba(244,248,255,0.6); margin-bottom: 7px">Xabar</label>
+            <textarea placeholder="Qanday tovarlar yuborasiz?" style="width: 100%; min-height: 92px; resize: vertical; border: 1.5px solid rgba(244,248,255,0.22); background: rgba(244,248,255,0.06); color: #f4f8ff; border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 600"></textarea>
+          </div>
+        </div>
+        <button style="border: 0; cursor: pointer; margin-top: 20px; background: #f4f8ff; color: #1F2853; font-weight: 700; font-size: 15.5px; padding: 14px 26px; border-radius: 999px">Ariza yuborish</button>
+      </div>
+      <div style="display: grid; gap: 24px; border-left: 1px solid rgba(244,248,255,0.18); padding-left: 40px">
+        <div>
+          <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,248,255,0.5); margin-bottom: 7px">Telefon</div>
+          <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">+998 71 200 00 90</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,248,255,0.5); margin-bottom: 7px">Telegram</div>
+          <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em">@elchipochta</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,248,255,0.5); margin-bottom: 7px">Manzil</div>
+          <div style="font-size: 14.5px; line-height: 1.55; font-weight: 500; color: rgba(244,248,255,0.8)">Toshkent, Yunusobod tumani, Amir Temur ko'chasi 108</div>
+        </div>
+        <div>
+          <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,248,255,0.5); margin-bottom: 7px">Ish vaqti</div>
+          <div style="font-size: 14.5px; line-height: 1.55; font-weight: 500; color: rgba(244,248,255,0.8)">Dushanba–Shanba, 09:00–19:00</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <footer style="margin-top: 88px; background: #06060C; color: #f4f8ff">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 48px 32px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap">
+      <div>
+        <img src="assets/elchi-lockup-trim.png" alt="Elchi Pochta" style="height: 34px; width: 103px; filter: brightness(0) invert(1); margin-bottom: 12px">
+        <div style="font-size: 13.5px; color: rgba(244,248,255,0.5); font-weight: 500; margin-top: 6px">E-commerce uchun yetkazib berish xizmati.</div>
+      </div>
+      <div style="display: flex; gap: 28px; font-size: 14px; font-weight: 600">
+        <a href="#" onClick="{{ goServices }}" style="text-decoration: none; color: rgba(244,248,255,0.8)">Xizmatlar</a>
+        <a href="#" onClick="{{ goPricing }}" style="text-decoration: none; color: rgba(244,248,255,0.8)">Tariflar</a>
+        <a href="#" onClick="{{ goPartners }}" style="text-decoration: none; color: rgba(244,248,255,0.8)">Hamkorlik</a>
+      </div>
+      <div style="font-size: 12.5px; color: rgba(244,248,255,0.4); font-weight: 500">© 2026 Elchi Pochta. Barcha huquqlar himoyalangan.</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;uz&quot;,&quot;ru&quot;,&quot;en&quot;],&quot;default&quot;:&quot;uz&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Sayt&quot;},&quot;expressMultiplier&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:1.1,&quot;max&quot;:2,&quot;step&quot;:0.05,&quot;default&quot;:1.4,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Tarif&quot;},&quot;pickupFee&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:0,&quot;max&quot;:30000,&quot;step&quot;:1000,&quot;default&quot;:8000,&quot;unit&quot;:&quot;so'm&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Tarif&quot;}}">
+const ZONE = { tsh: 1, tshv: 2, sam: 3, buh: 3, nav: 3, jiz: 3, sir: 3, far: 3, and: 3, nam: 3, qas: 3, sur: 4, xor: 4, qqr: 4 };
+const UZ_CITY = { tsh: "Toshkent shahri", tshv: "Toshkent viloyati", sam: "Samarqand", buh: "Buxoro", nav: "Navoiy", jiz: "Jizzax", sir: "Sirdaryo", far: "Farg'ona", and: "Andijon", nam: "Namangan", qas: "Qashqadaryo", sur: "Surxondaryo", xor: "Xorazm", qqr: "Qoraqalpog'iston" };
+const RATE = { 1: { base: 15000, extra: 2500, days: [1, 1] }, 2: { base: 20000, extra: 3000, days: [1, 1] }, 3: { base: 27000, extra: 4000, days: [1, 2] }, 4: { base: 34000, extra: 5000, days: [2, 3] } };
+const EXTRA_STRINGS = {
+  ru: {
+    "Jo'natmani kuzatish": "Отследить посылку",
+    "Jo'natma ID raqamini kiriting va holatini ko'ring.": "Введите ID посылки и посмотрите её статус.",
+    "Kuzatish": "Отследить",
+    "Qabul qilindi": "Принято",
+    "Saralash markazida": "В сортировочном центре",
+    "Yo'lda": "В пути",
+    "Namuna ma'lumot": "Демонстрационные данные",
+    "bugun kutilmoqda": "ожидается сегодня",
+    "Barcha xizmatlar →": "Все услуги →",
+    "Elchi Pochta jamoasi va saralash markazi, Toshkent": "Команда Elchi Pochta и сортировочный центр, Ташкент",
+    "Qanday tovarlar yuborasiz?": "Какие товары вы отправляете?"
+  },
+  en: {
+    "Jo'natmani kuzatish": "Track a parcel",
+    "Jo'natma ID raqamini kiriting va holatini ko'ring.": "Enter the parcel ID and see its status.",
+    "Kuzatish": "Track",
+    "Qabul qilindi": "Collected",
+    "Saralash markazida": "At the sorting centre",
+    "Yo'lda": "In transit",
+    "Namuna ma'lumot": "Sample data",
+    "bugun kutilmoqda": "expected today",
+    "Barcha xizmatlar →": "All services →",
+    "Elchi Pochta jamoasi va saralash markazi, Toshkent": "The Elchi Pochta team and sorting centre, Tashkent",
+    "Qanday tovarlar yuborasiz?": "What kind of goods do you send?"
+  }
+};
+
+class Component extends DCLogic {
+  state = { page: "home", lang: null, from: "tsh", to: "sam", weight: 1.2, len: 30, wid: 22, hei: 15, express: false, pickup: false, trackId: "EP-482913", tracked: true };
+
+  componentDidMount() {
+    this.setState({ lang: this.props.defaultLang || "uz" });
+    import("./i18n.js").then(m => {
+      this.i18n = m;
+      ["ru", "en"].forEach(l => {
+        Object.keys(UZ_CITY).forEach(id => { m.dict[l][UZ_CITY[id]] = m.cityNames[l][id]; });
+        Object.assign(m.dict[l], EXTRA_STRINGS[l]);
+      });
+      this.keys = new Set([...Object.keys(m.dict.ru), ...Object.keys(m.dict.en)]);
+      this.applyLang();
+      this.forceUpdate();
+    }).catch(e => console.warn("i18n", e));
+  }
+  componentDidUpdate() { this.applyLang(); this.watchHeroBg(); }
+
+  // The hero photo is a drop target until an image is present: keep it fully
+  // visible (and the overlay light) while empty so the affordance is reachable.
+  watchHeroBg() {
+    if (this._heroWatch) return;
+    const slot = this.root && this.root.querySelector("#v2-hero-bg");
+    if (!slot) return;
+    this._heroWatch = true;
+    const check = () => {
+      const filled = !!(slot.value || slot.src || slot.querySelector("img"));
+      if (filled !== this.state.heroFilled) this.setState({ heroFilled: filled });
+    };
+    check();
+    this._heroTimer = setInterval(check, 700);
+  }
+  componentWillUnmount() { clearInterval(this._heroTimer); }
+
+  applyLang() {
+    const root = this.root;
+    if (!root || !this.i18n) return;
+    const lang = this.state.lang || "uz";
+    const d = lang === "uz" ? null : this.i18n.dict[lang];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n;
+    while ((n = walker.nextNode())) {
+      const cached = n.__uz;
+      const raw = cached !== undefined ? cached : n.nodeValue;
+      const key = raw.trim();
+      if (!key) continue;
+      if (cached === undefined && !this.keys.has(key)) continue;
+      if (cached === undefined) n.__uz = raw;
+      const t = d && d[key];
+      const next = t ? raw.replace(key, t) : raw;
+      if (n.nodeValue !== next) n.nodeValue = next;
+    }
+    root.querySelectorAll("[placeholder]").forEach(el => {
+      const o = el.__uzph !== undefined ? el.__uzph : (el.__uzph = el.getAttribute("placeholder") || "");
+      const t = d && d[o.trim()];
+      el.setAttribute("placeholder", t || o);
+    });
+  }
+
+  go(page, hash) {
+    return e => {
+      e.preventDefault();
+      this.setState({ page }, () => {
+        if (hash) {
+          const el = this.root && this.root.querySelector(hash);
+          if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+        } else window.scrollTo({ top: 0 });
+      });
+    };
+  }
+  num(key, min) {
+    return e => {
+      const v = parseFloat(e.target.value);
+      this.setState({ [key]: isNaN(v) || v < min ? min : v });
+    };
+  }
+
+  money(v) {
+    const lang = this.state.lang || "uz";
+    const n = Math.round(v).toLocaleString("ru-RU").replace(/\u00a0/g, " ");
+    return lang === "en" ? n + " UZS" : lang === "ru" ? n + " сум" : n + " so'm";
+  }
+
+  calc() {
+    const s = this.state;
+    const zone = Math.max(ZONE[s.from], ZONE[s.to]);
+    const r = RATE[zone];
+    const vol = (s.len * s.wid * s.hei) / 5000;
+    const billable = Math.max(Math.ceil(Math.max(s.weight, vol) * 10) / 10, 0.1);
+    const extra = Math.max(0, Math.ceil(billable - 1)) * r.extra;
+    const sub = r.base + extra;
+    const expressFee = s.express ? sub * ((this.props.expressMultiplier ?? 1.4) - 1) : 0;
+    const pickupFee = s.pickup ? (this.props.pickupFee ?? 8000) : 0;
+    return { zone, r, vol, billable, extra, expressFee, pickupFee, total: Math.round((sub + expressFee + pickupFee) / 500) * 500 };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const lang = s.lang || "uz";
+    const c = this.calc();
+    const cityName = id => (lang === "uz" || !this.i18n ? UZ_CITY[id] : this.i18n.cityNames[lang][id]);
+    const kg = lang === "ru" ? " кг" : " kg";
+    const dayWord = ([a, b]) => {
+      const r = a === b ? String(a) : a + "–" + b;
+      return lang === "en" ? r + (a === b && a === 1 ? " day" : " days") : lang === "ru" ? r + (a === b && a === 1 ? " день" : " дня") : r + " kun";
+    };
+    const navy = "#1F2853";
+    const dim = "rgba(6,6,12,0.55)";
+    return {
+      rootRef: el => { this.root = el || this.root; if (el) setTimeout(() => this.watchHeroBg(), 0); },
+      heroBgOpacity: s.heroFilled ? 0.5 : 1,
+      heroOverlay: s.heroFilled
+        ? "linear-gradient(100deg, #1F2853 0%, rgba(31,40,83,0.93) 42%, rgba(31,40,83,0.62) 100%)"
+        : "linear-gradient(100deg, #1F2853 0%, rgba(31,40,83,0.88) 34%, rgba(31,40,83,0.1) 78%)",
+      isHome: s.page === "home", isServices: s.page === "services", isPricing: s.page === "pricing", isPartners: s.page === "partners",
+      cHome: s.page === "home" ? "#06060C" : navy,
+      cServices: s.page === "services" ? "#06060C" : navy,
+      cPricing: s.page === "pricing" ? "#06060C" : navy,
+      cPartners: s.page === "partners" ? "#06060C" : navy,
+      goHome: this.go("home"), goServices: this.go("services"), goPricing: this.go("pricing"), goPartners: this.go("partners", "#aloqa"), goHomeCalc: this.go("home", "#kalkulyator"),
+      setUz: () => this.setState({ lang: "uz" }), setRu: () => this.setState({ lang: "ru" }), setEn: () => this.setState({ lang: "en" }),
+      pillUz: lang === "uz" ? navy : "transparent", pillRu: lang === "ru" ? navy : "transparent", pillEn: lang === "en" ? navy : "transparent",
+      pillUzC: lang === "uz" ? "#f4f8ff" : dim, pillRuC: lang === "ru" ? "#f4f8ff" : dim, pillEnC: lang === "en" ? "#f4f8ff" : dim,
+      trackId: s.trackId, tracked: s.tracked,
+      setTrackId: e => this.setState({ trackId: e.target.value }),
+      track: () => this.setState({ tracked: true }),
+      from: s.from, to: s.to, weight: s.weight, len: s.len, wid: s.wid, hei: s.hei, pickup: s.pickup,
+      setFrom: e => this.setState({ from: e.target.value }),
+      setTo: e => this.setState({ to: e.target.value }),
+      setWeight: this.num("weight", 0.1), setLen: this.num("len", 1), setWid: this.num("wid", 1), setHei: this.num("hei", 1),
+      setStandard: () => this.setState({ express: false }), setExpress: () => this.setState({ express: true }),
+      pillStd: s.express ? "transparent" : navy, pillExp: s.express ? navy : "transparent",
+      pillStdC: s.express ? dim : "#f4f8ff", pillExpC: s.express ? "#f4f8ff" : dim,
+      togglePickup: e => this.setState({ pickup: e.target.checked }),
+      totalText: this.money(c.total),
+      routeText: cityName(s.from) + " → " + cityName(s.to) + " · " + c.zone + (lang === "en" ? "-zone" : lang === "ru" ? "-зона" : "-zona"),
+      actualText: s.weight.toFixed(1) + kg,
+      volText: c.vol.toFixed(1) + kg,
+      billableText: c.billable.toFixed(1) + kg,
+      baseText: this.money(c.r.base),
+      extraText: c.extra ? this.money(c.extra) : "—",
+      expressText: c.expressFee ? this.money(c.expressFee) : "—",
+      pickupText: c.pickupFee ? this.money(c.pickupFee) : "—",
+      daysText: dayWord(c.r.days)
+    };
+  }
+}
+</script>
+</body>
+</html>
