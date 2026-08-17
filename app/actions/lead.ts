@@ -11,8 +11,6 @@ export type LeadState = {
   errors?: Partial<Record<"name" | "phone", string>>;
 };
 
-export const initialLeadState: LeadState = { status: "idle" };
-
 /**
  * Oddiy tezlik chegarasi. Diqqat: xotirada saqlanadi, ya'ni serverless muhitda
  * har instansiya uchun alohida bo'ladi va sovuq startda tozalanadi. Bu jiddiy
@@ -61,12 +59,6 @@ export async function submitLead(
     ? rawLocale
     : routing.defaultLocale;
   const t = await getTranslations({ locale, namespace: "form" });
-
-  // Honeypot: odam ko'rmaydigan maydon to'ldirilgan bo'lsa — bot.
-  // Muvaffaqiyat deb javob beramiz, bot qayta urinmasin.
-  if (clean(formData.get("company"), 100)) {
-    return { status: "success", message: t("success") };
-  }
 
   const name = clean(formData.get("name"), 100);
   const phone = clean(formData.get("phone"), 30);

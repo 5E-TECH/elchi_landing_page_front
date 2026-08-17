@@ -3,8 +3,10 @@
 import { useActionState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { initialLeadState, submitLead } from "@/app/actions/lead";
+import { submitLead, type LeadState } from "@/app/actions/lead";
 import { Button } from "@/components/ui/Button";
+
+const initialLeadState: LeadState = { status: "idle" };
 
 const LABEL = "mb-[7px] block text-[12.5px] font-bold text-bg/60";
 const FIELD =
@@ -30,19 +32,6 @@ export default function LeadForm() {
   return (
     <form action={action} noValidate>
       <input type="hidden" name="locale" value={locale} />
-
-      {/* Honeypot — ekranda ko'rinmaydi, faqat botlar to'ldiradi.
-          Ekrandan tashqariga chiqarish (left:-9999px) sahifani kengaytirib
-          yuboradi, shuning uchun nol o'lchamli va kesilgan konteyner. */}
-      <div
-        aria-hidden="true"
-        className="absolute size-0 overflow-hidden opacity-0"
-      >
-        <label>
-          Company
-          <input name="company" tabIndex={-1} autoComplete="off" />
-        </label>
-      </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
