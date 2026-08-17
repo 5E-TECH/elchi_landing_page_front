@@ -116,24 +116,24 @@ export const VOLUMETRIC_DIVISOR = 5_000;
 /**
  * Dizayndagi rasm slotlari. Foto tayyor bo'lgach `src` ga `public/` ichidagi
  * yo'lni yozish kifoya — `null` bo'lsa `<Slot>` placeholder ko'rsatadi.
- * TODO(real): 17 ta foto suratga olinsin.
+ * Rasmlar `public/images/elchi/` ichida saqlanadi.
  */
 export const IMAGE_SLOTS: Record<string, string | null> = {
-  "hero-bg": null,
-  "band-1": null,
-  "band-2": null,
-  "band-3": null,
-  "band-4": null,
-  "step-1": null,
-  "step-2": null,
-  "step-3": null,
-  "step-4": null,
-  coverage: null,
-  team: null,
-  "svc-01": null,
-  "svc-02": null,
-  "svc-03": null,
-  "svc-04": null,
-  "svc-05": null,
-  "svc-06": null,
+  "hero-bg": "/images/elchi/hero-bg-v2-branded.webp",
+  "band-1": "/images/elchi/band-1-branded.webp",
+  "band-2": "/images/elchi/band-2-branded.webp",
+  "band-3": "/images/elchi/band-3-branded.webp",
+  "band-4": "/images/elchi/band-4-branded.webp",
+  "step-1": "/images/elchi/step-1-branded.webp",
+  "step-2": "/images/elchi/step-2-branded.webp",
+  "step-3": "/images/elchi/step-3-branded.webp",
+  "step-4": "/images/elchi/step-4-branded.webp",
+  coverage: "/images/elchi/coverage-branded.webp",
+  team: "/images/elchi/team-branded.webp",
+  "svc-01": "/images/elchi/svc-01-branded.webp",
+  "svc-02": "/images/elchi/svc-02-branded.webp",
+  "svc-03": "/images/elchi/svc-03-branded.webp",
+  "svc-04": "/images/elchi/svc-04-branded.webp",
+  "svc-05": "/images/elchi/svc-05-branded.webp",
+  "svc-06": "/images/elchi/svc-06-branded.webp",
 };
