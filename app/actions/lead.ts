@@ -60,6 +60,12 @@ export async function submitLead(
     : routing.defaultLocale;
   const t = await getTranslations({ locale, namespace: "form" });
 
+  // Honeypot: odam ko'rmaydigan maydon to'ldirilgan bo'lsa — bot.
+  // Muvaffaqiyat deb javob beramiz, bot qayta urinmasin.
+  if (clean(formData.get("company"), 100)) {
+    return { status: "success", message: t("success") };
+  }
+
   const name = clean(formData.get("name"), 100);
   const phone = clean(formData.get("phone"), 30);
   const shop = clean(formData.get("shop"), 200);

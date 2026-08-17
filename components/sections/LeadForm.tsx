@@ -33,6 +33,19 @@ export default function LeadForm() {
     <form action={action} noValidate>
       <input type="hidden" name="locale" value={locale} />
 
+      {/* Honeypot — ekranda ko'rinmaydi, faqat botlar to'ldiradi.
+          Ekrandan tashqariga chiqarish (left:-9999px) sahifani kengaytirib
+          yuboradi, shuning uchun nol o'lchamli va kesilgan konteyner. */}
+      <div
+        aria-hidden="true"
+        className="absolute size-0 overflow-hidden opacity-0"
+      >
+        <label>
+          Company
+          <input name="company" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label className={LABEL} htmlFor="lead-name">
