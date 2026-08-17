@@ -12,7 +12,7 @@ export default async function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden rounded-b-block bg-navy text-bg">
-      {/* Foto fon — hali yo'q, shu sababli navy sirt bo'lib ko'rinadi. */}
+      {/* Foto fon ustidagi navy qatlam matn kontrastini barqaror saqlaydi. */}
       <div className="absolute inset-0 z-0 opacity-50">
         <Slot id="hero-bg" priority sizes="100vw" />
       </div>
