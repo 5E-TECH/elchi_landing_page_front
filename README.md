@@ -15,7 +15,8 @@ SEO va yuklanish tezligi yaxshi.
 | Uslub | Tailwind CSS 4 (`@theme` tokenlari `app/globals.css` da) |
 | i18n | next-intl 4 — `/uz`, `/ru`, `/en` |
 | Testlar | Vitest (`lib/pricing.test.ts`) |
-| Deploy | Vercel |
+| Deploy | Cloudflare Workers (`@opennextjs/cloudflare`) |
+| Node | 22 (`.node-version`) — wrangler 22 dan pastini qo'llamaydi |
 
 ## Ishga tushirish
 
@@ -33,6 +34,8 @@ npm run dev                    # http://localhost:3000/uz
 | `npm test` | Kalkulyator testlari |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
+| `npm run preview` | Build + lokal **Workers** muhiti (`workerd`) — deploydan oldingi haqiqiy sinov |
+| `npm run deploy` | Build + Cloudflare'ga qo'lda deploy |
 
 ## Muhit o'zgaruvchilari
 
@@ -42,6 +45,44 @@ npm run dev                    # http://localhost:3000/uz
 - `TELEGRAM_LEAD_CHAT_ID` — menejerlar guruhi id'si (guruh uchun manfiy son)
 
 Ular bo'lmasa forma xato qaytaradi va konsolga sabab yoziladi.
+
+Uch joyda uch xil beriladi:
+
+| Qayerda | Qanday |
+| --- | --- |
+| `npm run dev` | `.env.local` |
+| `npm run preview` (Workers muhiti) | `.dev.vars` |
+| Production | `npx wrangler secret put TELEGRAM_BOT_TOKEN` |
+
+Sirlar repoga hech qachon yozilmaydi — uchala fayl ham `.gitignore` da.
+
+## Branchlar va deploy
+
+```
+shodiyor ──┐
+dilshodbek ─┼──> dev ──> main ──> production (avtomatik)
+   ...   ──┘
+```
+
+- **`main`** — productionda turgan kod. Bu yerga merge bo'lishi bilan
+  Cloudflare o'zi build qilib `elchipochta.uz` ga chiqaradi. To'g'ridan-to'g'ri
+  push qilinmaydi.
+- **`dev`** — yig'ish branchi. Har kimning ishi avval shu yerda birlashadi va
+  tekshiriladi.
+- **Shaxsiy branchlar** (`shodiyor`, ...) — kundalik ish shu yerda.
+
+`main` dan boshqa branchga push qilinganda Cloudflare **preview versiya**
+yaratadi (`wrangler versions upload`) — u productionga tegmaydi, alohida
+URL beradi, ya'ni merge qilishdan oldin ko'rib olsa bo'ladi.
+
+Merge qilishdan oldin lokal tekshiruv:
+
+```bash
+npm run typecheck && npm run lint && npm test && npm run preview
+```
+
+`npm run preview` muhim — `next dev` Node muhitida ishlaydi, production esa
+`workerd` da. Farq faqat shu buyruqda ko'rinadi.
 
 ## Tuzilma
 
@@ -61,8 +102,11 @@ config/nav.ts        menyu havolalari
 i18n/                next-intl sozlamalari
 lib/pricing.ts       kalkulyator (sof funksiya + testlar)
 messages/            uz.json / ru.json / en.json
-proxy.ts             locale yo'naltirish (Next 16 da middleware shunday ataladi)
+app/route.ts         ildiz `/` uchun til aniqlash va yo'naltirish
 design/              dizayn manbasi — README.md ni o'qing
+wrangler.jsonc       Cloudflare Worker sozlamalari
+open-next.config.ts  Next -> Workers adapteri
+public/_headers      statik fayllar uchun cache qoidalari
 ```
 
 ## ⚠️ Ishga tushirishdan oldin
