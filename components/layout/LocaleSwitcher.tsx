@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useTransition } from "react";
+import { useEffect, useTransition } from "react";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -21,6 +21,13 @@ export default function LocaleSwitcher({
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+
+  // Ko'rilayotgan tilni cookie'ga yozib boramiz — `app/route.ts` ildizga
+  // kelganda shu qiymatni brauzer tilidan ustun qo'yadi. Ilgari buni next-intl
+  // middleware qilardi va u ham aynan ochilgan sahifa tilini yozardi.
+  useEffect(() => {
+    document.cookie = `NEXT_LOCALE=${active}; path=/; max-age=31536000; samesite=lax`;
+  }, [active]);
 
   function select(locale: string) {
     if (locale === active) return;

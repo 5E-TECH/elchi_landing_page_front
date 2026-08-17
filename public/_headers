@@ -1,0 +1,9 @@
+# Statik brend va foto fayllari nomi bo'yicha versiyalanmaydi, lekin ular
+# kamdan-kam o'zgaradi — uzoq cache berib, o'zgarganda fayl nomini almashtiramiz.
+# (Vercel'dagi `vercel.json` headers Cloudflare'da ishlamaydi, o'rnini shu bosadi.)
+
+/brand/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,0 +1,27 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "elchi-landing",
+	"compatibility_date": "2026-04-15",
+	// `nodejs_compat` — Server Action'lar (ariza formasi) uchun majburiy.
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// Servis nomi `name` bilan bir xil bo'lishi shart.
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "elchi-landing"
+		}
+	],
+	// `next/image` optimizatsiyasi — Cloudflare Images orqali.
+	// Free planda oyiga 5 000 uniq transformatsiya bepul; bu sayt uchun ~140 ta kerak.
+	"images": {
+		"binding": "IMAGES"
+	}
+
+	// Domen 1-deploy sinovdan o'tgach qo'shiladi:
+	// "routes": [{ "pattern": "elchipochta.uz", "custom_domain": true }]
+}
