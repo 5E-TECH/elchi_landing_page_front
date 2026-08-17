@@ -124,7 +124,11 @@ export async function submitLead(
     );
 
     if (!response.ok) {
-      console.error("[lead] Telegram javobi:", response.status, await response.text());
+      console.error(
+        "[lead] Telegram javobi:",
+        response.status,
+        await response.text(),
+      );
       return { status: "error", message: t("error"), values };
     }
   } catch (error) {

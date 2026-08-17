@@ -1,0 +1,14 @@
+# Build chiqishlari — generatsiya qilinadi, formatlanmaydi.
+.next/
+.open-next/
+.wrangler/
+node_modules/
+
+# Dizayn manbasi — bizning kodimiz emas, asl holida saqlanadi.
+design/
+
+# Tarjimalar JSON.stringify(…, 2) bilan yoziladi; prettier ularga tegmasin,
+# aks holda diff har safar ikki xil bo'ladi.
+messages/
+
+package-lock.json

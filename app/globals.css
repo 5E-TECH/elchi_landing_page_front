@@ -16,8 +16,8 @@
      Outfit lotin uchun (dizayndagi shrift), Manrope esa kirill uchun:
      Outfit'da kirill glifi yo'q, brauzer yetishmagan harflarni keyingi
      shriftdan oladi. Tartib muhim — Outfit birinchi turishi shart. */
-  --font-sans: var(--font-outfit-latin), var(--font-outfit-cyrillic), system-ui,
-    sans-serif;
+  --font-sans:
+    var(--font-outfit-latin), var(--font-outfit-cyrillic), system-ui, sans-serif;
 
   /* Radiuslar — dizayndagi to'rt o'lcham */
   --radius-card: 16px;

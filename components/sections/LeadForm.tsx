@@ -31,7 +31,10 @@ export default function LeadForm() {
   useEffect(() => {
     if (state.status === "success") {
       successRef.current?.focus();
-      successRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+      successRef.current?.scrollIntoView({
+        block: "center",
+        behavior: "smooth",
+      });
       return;
     }
 
@@ -89,7 +92,9 @@ export default function LeadForm() {
             placeholder={t("namePlaceholder")}
             defaultValue={state.values?.name ?? ""}
             aria-invalid={state.errors?.name ? true : undefined}
-            aria-describedby={state.errors?.name ? "lead-name-error" : undefined}
+            aria-describedby={
+              state.errors?.name ? "lead-name-error" : undefined
+            }
             className={FIELD}
           />
           {state.errors?.name ? (

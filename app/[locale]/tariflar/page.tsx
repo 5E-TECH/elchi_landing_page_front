@@ -54,7 +54,9 @@ export default async function PricingPage({
 
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
         <div className="rounded-panel border border-navy/10 bg-white p-6 md:p-[30px]">
-          <h2 className="mb-5 text-[22px] md:text-[25px]">{t("extrasTitle")}</h2>
+          <h2 className="mb-5 text-[22px] md:text-[25px]">
+            {t("extrasTitle")}
+          </h2>
           <dl className="tnum grid text-[14.5px] font-semibold">
             {rows.map(([label, value]) => (
               <div
@@ -63,9 +65,7 @@ export default async function PricingPage({
               >
                 <dt className="font-medium text-ink/70">{label}</dt>
                 <dd
-                  className={
-                    label === t("packaging") ? "text-navy" : undefined
-                  }
+                  className={label === t("packaging") ? "text-navy" : undefined}
                 >
                   {value}
                 </dd>

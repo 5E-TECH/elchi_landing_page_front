@@ -17,7 +17,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-navy/10 bg-bg/92 backdrop-blur-[10px]">
       <div className="container-page flex items-center gap-9 py-4">
-        <Link href="/" className="mr-auto flex items-center" aria-label="Elchi Pochta">
+        <Link
+          href="/"
+          className="mr-auto flex items-center"
+          aria-label="Elchi Pochta"
+        >
           <Image
             src="/brand/elchi-lockup-trim.png"
             alt="Elchi Pochta"

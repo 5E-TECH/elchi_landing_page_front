@@ -23,7 +23,12 @@ export default function TrackCard() {
   const steps = [
     { label: t("collected"), place: tr("tsh"), time: "09:42", done: true },
     { label: t("sorting"), place: tr("tsh"), time: "14:10", done: true },
-    { label: t("transit"), place: tr("sam"), time: t("expectedToday"), done: false },
+    {
+      label: t("transit"),
+      place: tr("sam"),
+      time: t("expectedToday"),
+      done: false,
+    },
   ];
 
   return (
@@ -59,9 +64,7 @@ export default function TrackCard() {
               <span
                 aria-hidden="true"
                 className={`mt-1 size-2.5 flex-none rounded-pill ${
-                  step.done
-                    ? "bg-navy"
-                    : "border-[2.5px] border-navy bg-bg"
+                  step.done ? "bg-navy" : "border-[2.5px] border-navy bg-bg"
                 }`}
               />
               <div>

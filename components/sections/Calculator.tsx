@@ -8,12 +8,7 @@ import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
 import { CTA_HREF } from "@/config/nav";
 import { REGION_IDS, type RegionId } from "@/config/site";
-import {
-  formatDays,
-  formatMoney,
-  formatWeight,
-  quote,
-} from "@/lib/pricing";
+import { formatDays, formatMoney, formatWeight, quote } from "@/lib/pricing";
 
 const FIELD =
   "w-full rounded-[12px] border-[1.5px] border-navy/16 bg-white px-3.5 py-3 text-[14.5px] font-semibold text-ink";
@@ -256,7 +251,9 @@ export default function Calculator() {
             </div>
             <div className="mt-2.5 flex justify-between gap-3 text-[13.5px] font-semibold text-bg/60">
               <span>{t("days")}</span>
-              <span>{formatDays(q.days, { day: u("day"), days: u("days") })}</span>
+              <span>
+                {formatDays(q.days, { day: u("day"), days: u("days") })}
+              </span>
             </div>
 
             <ButtonLink

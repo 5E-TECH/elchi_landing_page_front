@@ -56,9 +56,7 @@ export default function LocaleSwitcher({
             disabled={isPending}
             aria-current={isActive ? "true" : undefined}
             className={`cursor-pointer rounded-pill px-3 py-1.5 text-xs font-bold uppercase transition-colors ${
-              isActive
-                ? "bg-navy text-bg"
-                : "text-ink/55 hover:text-navy"
+              isActive ? "bg-navy text-bg" : "text-ink/55 hover:text-navy"
             }`}
           >
             {locale}

@@ -8,15 +8,15 @@ SEO va yuklanish tezligi yaxshi.
 
 ## Stack
 
-| | |
-| --- | --- |
-| Framework | Next.js 16 (App Router, Turbopack) |
-| Til | TypeScript |
-| Uslub | Tailwind CSS 4 (`@theme` tokenlari `app/globals.css` da) |
-| i18n | next-intl 4 — `/uz`, `/ru`, `/en` |
-| Testlar | Vitest (`lib/pricing.test.ts`) |
-| Deploy | Cloudflare Workers (`@opennextjs/cloudflare`) |
-| Node | 22 (`.node-version`) — wrangler 22 dan pastini qo'llamaydi |
+|           |                                                            |
+| --------- | ---------------------------------------------------------- |
+| Framework | Next.js 16 (App Router, Turbopack)                         |
+| Til       | TypeScript                                                 |
+| Uslub     | Tailwind CSS 4 (`@theme` tokenlari `app/globals.css` da)   |
+| i18n      | next-intl 4 — `/uz`, `/ru`, `/en`                          |
+| Testlar   | Vitest (`lib/pricing.test.ts`)                             |
+| Deploy    | Cloudflare Workers (`@opennextjs/cloudflare`)              |
+| Node      | 22 (`.node-version`) — wrangler 22 dan pastini qo'llamaydi |
 
 ## Ishga tushirish
 
@@ -26,16 +26,16 @@ cp .env.example .env.local     # qiymatlarni to'ldiring
 npm run dev                    # http://localhost:3000/uz
 ```
 
-| Buyruq | Nima qiladi |
-| --- | --- |
-| `npm run dev` | Dev server |
-| `npm run build` | Production build (12 sahifa SSG) |
-| `npm start` | Build'ni ishga tushirish |
-| `npm test` | Kalkulyator testlari |
-| `npm run lint` | ESLint |
-| `npm run typecheck` | `tsc --noEmit` |
-| `npm run preview` | Build + lokal **Workers** muhiti (`workerd`) — deploydan oldingi haqiqiy sinov |
-| `npm run deploy` | Build + Cloudflare'ga qo'lda deploy |
+| Buyruq              | Nima qiladi                                                                    |
+| ------------------- | ------------------------------------------------------------------------------ |
+| `npm run dev`       | Dev server                                                                     |
+| `npm run build`     | Production build (12 sahifa SSG)                                               |
+| `npm start`         | Build'ni ishga tushirish                                                       |
+| `npm test`          | Kalkulyator testlari                                                           |
+| `npm run lint`      | ESLint                                                                         |
+| `npm run typecheck` | `tsc --noEmit`                                                                 |
+| `npm run preview`   | Build + lokal **Workers** muhiti (`workerd`) — deploydan oldingi haqiqiy sinov |
+| `npm run deploy`    | Build + Cloudflare'ga qo'lda deploy                                            |
 
 ## Muhit o'zgaruvchilari
 
@@ -48,11 +48,11 @@ Ular bo'lmasa forma xato qaytaradi va konsolga sabab yoziladi.
 
 Uch joyda uch xil beriladi:
 
-| Qayerda | Qanday |
-| --- | --- |
-| `npm run dev` | `.env.local` |
-| `npm run preview` (Workers muhiti) | `.dev.vars` |
-| Production | `npx wrangler secret put TELEGRAM_BOT_TOKEN` |
+| Qayerda                            | Qanday                                       |
+| ---------------------------------- | -------------------------------------------- |
+| `npm run dev`                      | `.env.local`                                 |
+| `npm run preview` (Workers muhiti) | `.dev.vars`                                  |
+| Production                         | `npx wrangler secret put TELEGRAM_BOT_TOKEN` |
 
 Sirlar repoga hech qachon yozilmaydi — uchala fayl ham `.gitignore` da.
 
@@ -78,11 +78,29 @@ URL beradi, ya'ni merge qilishdan oldin ko'rib olsa bo'ladi.
 Merge qilishdan oldin lokal tekshiruv:
 
 ```bash
-npm run typecheck && npm run lint && npm test && npm run preview
+npm run typecheck && npm run lint && npm run format:check && npm test && npm run preview
 ```
 
 `npm run preview` muhim — `next dev` Node muhitida ishlaydi, production esa
 `workerd` da. Farq faqat shu buyruqda ko'rinadi.
+
+## Kod formati
+
+Format Prettier bilan belgilangan (`.prettierrc`). Sozlamalar standart —
+maqsad bahsni tugatish, uslub tanlash emas.
+
+```bash
+npm run format         # formatlash
+npm run format:check   # tekshirish (o'zgartirmaydi)
+```
+
+Muharriringizda "format on save" yoqilgan bo'lsa, u **Prettier** ni va shu
+konfiguratsiyani ishlatishiga ishonch hosil qiling. Aks holda har kim o'z
+sozlamasi bilan formatlab, diff'lar mantiq o'zgarmasa ham shovqinli bo'ladi va
+merge konfliktlar ko'payadi.
+
+`messages/*.json` va `design/` formatlanmaydi (`.prettierignore` ga qarang) —
+birinchisi skript bilan yoziladi, ikkinchisi dizayn manbasi.
 
 ## Tuzilma
 
