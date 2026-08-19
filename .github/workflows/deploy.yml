@@ -43,6 +43,9 @@ jobs:
       - run: npm ci
 
       # Sifat darvozasi — yiqilsa deploy umuman boshlanmaydi.
+      # `typecheck` ichida `next typegen` bor: `PageProps`/`LayoutProps` global
+      # tiplarini Next build vaqtida `.next/types` ga yozadi, CI'da esa toza
+      # checkout — `.next` yo'q. Typegen'siz `tsc` "Cannot find name" deb yiqiladi.
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
