@@ -1,0 +1,66 @@
+# Cloudflare Workers'ga avtomatik deploy.
+#
+# `main` ga merge bo'lishi bilan sayt elchipochta.uz da yangilanadi.
+# Boshqa branchlarga push bo'lganda esa faqat *preview versiya* yuklanadi —
+# u productionga tegmaydi, alohida URL beradi.
+#
+# Kerakli GitHub Secrets (Settings -> Secrets and variables -> Actions):
+#   CLOUDFLARE_API_TOKEN   — "Edit Cloudflare Workers" shablonidagi token
+#   CLOUDFLARE_ACCOUNT_ID  — akkaunt id
+#
+# Worker sirlari (TELEGRAM_BOT_TOKEN, TELEGRAM_LEAD_CHAT_ID) bu yerda EMAS:
+# ular `wrangler secret put` orqali bir marta qo'yiladi va deploy ularni
+# o'chirmaydi. Shuning uchun ariza formasi tokeni GitHub'ga umuman tushmaydi.
+
+name: Deploy
+
+on:
+  push:
+    branches: ["**"]
+  workflow_dispatch:
+
+# Bir branchda ikkita deploy bir vaqtda ketmasin. Productionni yarim yo'lda
+# bekor qilib qo'ymaslik uchun main'da `cancel-in-progress` o'chirilgan.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+
+      # Sifat darvozasi — yiqilsa deploy umuman boshlanmaydi.
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+
+      - name: Build
+        run: npx opennextjs-cloudflare build
+
+      # main -> production. Boshqa branch -> preview versiya (alohida URL).
+      - name: Deploy (production)
+        if: github.ref == 'refs/heads/main'
+        run: npx opennextjs-cloudflare deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Upload preview version
+        if: github.ref != 'refs/heads/main'
+        run: npx opennextjs-cloudflare upload
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

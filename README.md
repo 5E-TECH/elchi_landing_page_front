@@ -65,15 +65,34 @@ dilshodbek ─┼──> dev ──> main ──> production (avtomatik)
 ```
 
 - **`main`** — productionda turgan kod. Bu yerga merge bo'lishi bilan
-  Cloudflare o'zi build qilib `elchipochta.uz` ga chiqaradi. To'g'ridan-to'g'ri
+  GitHub Actions build qilib `elchipochta.uz` ga chiqaradi. To'g'ridan-to'g'ri
   push qilinmaydi.
 - **`dev`** — yig'ish branchi. Har kimning ishi avval shu yerda birlashadi va
   tekshiriladi.
 - **Shaxsiy branchlar** (`shodiyor`, ...) — kundalik ish shu yerda.
 
-`main` dan boshqa branchga push qilinganda Cloudflare **preview versiya**
-yaratadi (`wrangler versions upload`) — u productionga tegmaydi, alohida
+`main` dan boshqa branchga push qilinganda workflow **preview versiya**
+yuklaydi (`opennextjs-cloudflare upload`) — u productionga tegmaydi, alohida
 URL beradi, ya'ni merge qilishdan oldin ko'rib olsa bo'ladi.
+
+Oqim `.github/workflows/deploy.yml` da. Har deploydan oldin `typecheck`,
+`lint` va `test` ishlaydi — biri yiqilsa deploy boshlanmaydi.
+
+Ishlashi uchun GitHub repo Secrets'ida ikkita qiymat bo'lishi shart
+(**Settings → Secrets and variables → Actions**):
+
+| Secret                  | Qayerdan olinadi                                                                     |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `CLOUDFLARE_API_TOKEN`  | Cloudflare → My Profile → API Tokens → Create → **Edit Cloudflare Workers** shabloni |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare dashboard URL'idagi id (yoki `npx wrangler whoami`)                       |
+
+Telegram tokenlari bu yerga **qo'yilmaydi** — ular Worker sirlari
+(`npx wrangler secret put ...`) va deploy ularni o'chirmaydi.
+
+Zarur bo'lsa qo'lda ham chiqarish mumkin: `npm run deploy`.
+
+> Deploydan keyin yangi versiya global tarqalishiga ~1 daqiqa ketadi —
+> darhol tekshirsangiz eski sahifani ko'rishingiz mumkin.
 
 Merge qilishdan oldin lokal tekshiruv:
 
