@@ -50,7 +50,7 @@ export default async function Hero() {
         </div>
 
         <div className="container-page pt-16 pb-14">
-          <div className="grid gap-px overflow-hidden rounded-[18px] bg-bg/14 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px overflow-clip rounded-[18px] bg-bg/14 [clip-path:inset(0_round_18px)] sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((stat) => (
               <div
                 key={stat.id}
