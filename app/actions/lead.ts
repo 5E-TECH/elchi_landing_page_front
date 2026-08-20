@@ -10,6 +10,7 @@ import { isThrottled, markSent } from "@/lib/throttle";
 export type LeadValues = {
   name: string;
   phone: string;
+  city: string;
   shop: string;
   volume: string;
   message: string;
@@ -18,7 +19,7 @@ export type LeadValues = {
 export type LeadState = {
   status: "idle" | "success" | "error";
   message?: string;
-  errors?: Partial<Record<"name" | "phone", string>>;
+  errors?: Partial<Record<"name" | "phone" | "city", string>>;
   /** Xato bo'lganda forma qayta to'ldirilishi uchun. */
   values?: LeadValues;
 };
@@ -35,6 +36,16 @@ function clean(value: FormDataEntryValue | null, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
 
+/** Mahalliy raqamni Telegramga yuborishdan oldin +998 formatiga keltiradi. */
+function normalizeUzPhone(value: string) {
+  const digits = value.replace(/\D/g, "");
+  if (!digits) return "";
+
+  if (digits.startsWith("998")) return `+${digits}`;
+  if (digits.startsWith("0")) return `+998${digits.slice(1)}`;
+  return `+998${digits}`;
+}
+
 export async function submitLead(
   _prev: LeadState,
   formData: FormData,
@@ -49,23 +60,24 @@ export async function submitLead(
 
   // Honeypot: odam ko'rmaydigan maydon to'ldirilgan bo'lsa — bot.
   // Muvaffaqiyat deb javob beramiz, bot qayta urinmasin.
-  if (clean(formData.get("company"), 100)) {
+  if (clean(formData.get("lead_check"), 100)) {
     return { status: "success", message: t("success") };
   }
 
   const name = clean(formData.get("name"), 100);
-  const phone = clean(formData.get("phone"), 30);
+  const phone = normalizeUzPhone(clean(formData.get("phone"), 30));
+  const city = clean(formData.get("city"), 100);
   const shop = clean(formData.get("shop"), 200);
   const volume = clean(formData.get("volume"), 20);
   const message = clean(formData.get("message"), 1000);
 
-  const values: LeadValues = { name, phone, shop, volume, message };
+  const values: LeadValues = { name, phone, city, shop, volume, message };
 
   const errors: LeadState["errors"] = {};
   if (!name) errors.name = t("requiredName");
   if (!phone) errors.phone = t("requiredPhone");
-  else if ((phone.match(/\d/g) ?? []).length < 9)
-    errors.phone = t("invalidPhone");
+  else if (!/^\+998\d{9}$/.test(phone)) errors.phone = t("invalidPhone");
+  if (!city) errors.city = t("requiredCity");
 
   if (Object.keys(errors).length) {
     return { status: "error", errors, values };
@@ -99,6 +111,7 @@ export async function submitLead(
     "",
     `<b>Ism:</b> ${escapeHtml(name)}`,
     `<b>Telefon:</b> ${escapeHtml(phone)}`,
+    `<b>Shahar / viloyat:</b> ${escapeHtml(city)}`,
     shop ? `<b>Do'kon:</b> ${escapeHtml(shop)}` : null,
     volume ? `<b>Oyiga jo'natma:</b> ${escapeHtml(volume)}` : null,
     message ? `<b>Xabar:</b> ${escapeHtml(message)}` : null,
