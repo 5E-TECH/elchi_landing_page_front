@@ -235,6 +235,7 @@
     "subtitle": "We call within a day and quote a price based on how many parcels you send each month.",
     "name": "Your name",
     "phone": "Phone",
+    "city": "City / region",
     "shop": "Store name or link",
     "volume": "Approximate parcels per month",
     "message": "Message",
@@ -248,6 +249,7 @@
     "requiredHint": "* — required fields",
     "namePlaceholder": "Aziz Karimov",
     "phonePlaceholder": "+998 90 123 45 67",
+    "cityPlaceholder": "Type a city or region",
     "shopPlaceholder": "instagram.com/mystore",
     "volumePlaceholder": "120"
   },
@@ -257,7 +259,8 @@
     "error": "The request was not sent. Please try again or call us.",
     "requiredName": "Enter your name",
     "requiredPhone": "Enter your phone number",
-    "invalidPhone": "The phone number is incomplete",
+    "requiredCity": "Enter your city or region",
+    "invalidPhone": "Enter a 9-digit Uzbekistan phone number",
     "throttled": "Your request has already been sent. Please wait a moment before sending again."
   },
   "footer": {

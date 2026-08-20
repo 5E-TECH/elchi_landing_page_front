@@ -235,6 +235,7 @@
     "subtitle": "Bir kun ichida qo'ng'iroq qilamiz va oyiga necha jo'natma yuborishingizga qarab narx taklif qilamiz.",
     "name": "Ismingiz",
     "phone": "Telefon",
+    "city": "Shahar / viloyat",
     "shop": "Do'kon nomi yoki havolasi",
     "volume": "Oyiga taxminiy jo'natma soni",
     "message": "Xabar",
@@ -248,6 +249,7 @@
     "requiredHint": "* — majburiy maydonlar",
     "namePlaceholder": "Aziz Karimov",
     "phonePlaceholder": "+998 90 123 45 67",
+    "cityPlaceholder": "Shahar yoki viloyatni yozing",
     "shopPlaceholder": "instagram.com/mydokon",
     "volumePlaceholder": "120"
   },
@@ -257,7 +259,8 @@
     "error": "Ariza yuborilmadi. Iltimos, qaytadan urinib ko'ring yoki telefon orqali bog'laning.",
     "requiredName": "Ismingizni kiriting",
     "requiredPhone": "Telefon raqamingizni kiriting",
-    "invalidPhone": "Telefon raqami to'liq emas",
+    "requiredCity": "Shahar yoki viloyatingizni kiriting",
+    "invalidPhone": "9 xonali O'zbekiston telefon raqamini kiriting",
     "throttled": "Arizangiz allaqachon yuborildi. Yana yuborish uchun bir oz kuting."
   },
   "footer": {
