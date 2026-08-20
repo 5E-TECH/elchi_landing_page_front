@@ -121,7 +121,7 @@ export const VOLUMETRIC_DIVISOR = 5_000;
 export const IMAGE_SLOTS: Record<string, string | null> = {
   "hero-bg": "/images/elchi/hero-bg-v2-branded.webp",
   "band-1": "/images/elchi/band-1-branded.webp",
-  "band-2": "/images/elchi/band-2-branded.webp",
+  "band-2": "/images/elchi/band-2-branded-v2.png",
   "band-3": "/images/elchi/band-3-branded.webp",
   "band-4": "/images/elchi/band-4-branded.webp",
   "step-1": "/images/elchi/step-1-branded.webp",
