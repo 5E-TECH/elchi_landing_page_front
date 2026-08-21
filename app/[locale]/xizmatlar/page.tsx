@@ -6,6 +6,7 @@ import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
 import Slot from "@/components/ui/Slot";
 import { CTA_HREF } from "@/config/nav";
+import { localizedAlternates } from "@/lib/seo";
 
 const SERVICES = [
   { key: "s1", slot: "svc-01" },
@@ -21,9 +22,16 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/xizmatlar">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
+  const page = await getTranslations({ locale, namespace: "servicesPage" });
   return {
-    title: t("servicesTitle"),
-    alternates: { canonical: `/${locale}/xizmatlar` },
+    title: { absolute: t("servicesTitle") },
+    description: page("subtitle"),
+    alternates: localizedAlternates(locale, "xizmatlar"),
+    openGraph: {
+      title: t("servicesTitle"),
+      description: page("subtitle"),
+      url: `/${locale}/xizmatlar`,
+    },
   };
 }
 
