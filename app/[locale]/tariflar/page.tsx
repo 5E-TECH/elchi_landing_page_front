@@ -8,15 +8,23 @@ import Kicker from "@/components/ui/Kicker";
 import { CALC_HREF } from "@/config/nav";
 import { EXTRAS } from "@/config/site";
 import { formatMoney } from "@/lib/pricing";
+import { localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/tariflar">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
+  const page = await getTranslations({ locale, namespace: "pricingPage" });
   return {
-    title: t("pricingTitle"),
-    alternates: { canonical: `/${locale}/tariflar` },
+    title: { absolute: t("pricingTitle") },
+    description: page("subtitle"),
+    alternates: localizedAlternates(locale, "tariflar"),
+    openGraph: {
+      title: t("pricingTitle"),
+      description: page("subtitle"),
+      url: `/${locale}/tariflar`,
+    },
   };
 }
 

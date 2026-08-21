@@ -5,6 +5,7 @@ import LeadForm from "@/components/sections/LeadForm";
 import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
 import { CONTACTS } from "@/config/site";
+import { localizedAlternates } from "@/lib/seo";
 
 const STEPS = ["p1", "p2", "p3", "p4"] as const;
 
@@ -13,9 +14,16 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/hamkorlik">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
+  const page = await getTranslations({ locale, namespace: "partnersPage" });
   return {
-    title: t("partnersTitle"),
-    alternates: { canonical: `/${locale}/hamkorlik` },
+    title: { absolute: t("partnersTitle") },
+    description: page("subtitle"),
+    alternates: localizedAlternates(locale, "hamkorlik"),
+    openGraph: {
+      title: t("partnersTitle"),
+      description: page("subtitle"),
+      url: `/${locale}/hamkorlik`,
+    },
   };
 }
 
