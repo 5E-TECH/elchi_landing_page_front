@@ -1,20 +1,19 @@
 import { getTranslations } from "next-intl/server";
 
-import { ZONE_RATES, type ZoneId } from "@/config/site";
+import { TARIFF_IDS, TARIFFS } from "@/config/site";
 import { formatDays, formatNumber } from "@/lib/pricing";
 
-const ZONES: ZoneId[] = [1, 2, 3, 4];
-
 const ROW =
-  "grid grid-cols-[0.7fr_2fr] gap-3 px-5 py-5 md:grid-cols-[0.7fr_2fr_1fr_1fr_0.8fr] md:px-[22px]";
+  "grid grid-cols-[0.9fr_2fr] gap-3 px-5 py-5 md:grid-cols-[0.9fr_2fr_1fr_1fr_0.8fr] md:px-[22px]";
 
 /**
- * Zona tariflari jadvali — bosh sahifadagi "Qamrov" va "Tariflar" sahifasida
- * bir xil ko'rinadi, shuning uchun bitta komponent. Narxlar `config/site.ts`
- * dan, muddat esa o'sha yerdagi `days` dan hisoblanadi.
+ * Tarif jadvali — bosh sahifadagi "Qamrov" va "Tariflar" sahifasida bir xil
+ * ko'rinadi, shuning uchun bitta komponent. Narx va muddat `config/site.ts`
+ * dagi `TARIFFS` dan keladi, nomlar `messages/*.json` dagi `tariffs` dan.
  */
-export default async function ZoneTable() {
+export default async function TariffTable() {
   const t = await getTranslations("coverage");
+  const tt = await getTranslations("tariffs");
   const u = await getTranslations("units");
 
   return (
@@ -22,15 +21,15 @@ export default async function ZoneTable() {
       <div
         className={`${ROW} bg-navy/5 !py-4 text-[11.5px] font-extrabold tracking-[0.06em] text-ink/50 uppercase`}
       >
-        <div>{t("zone")}</div>
-        <div>{t("regions")}</div>
+        <div>{t("tariff")}</div>
+        <div>{t("detail")}</div>
         <div className="hidden text-right md:block">{t("upTo1kg")}</div>
         <div className="hidden text-right md:block">{t("perExtraKg")}</div>
         <div className="hidden text-right md:block">{t("term")}</div>
       </div>
 
-      {ZONES.map((zone) => {
-        const rate = ZONE_RATES[zone];
+      {TARIFF_IDS.map((id) => {
+        const rate = TARIFFS[id];
         const days = formatDays(rate.days, {
           day: u("day"),
           days: u("days"),
@@ -38,12 +37,12 @@ export default async function ZoneTable() {
 
         return (
           <div
-            key={zone}
+            key={id}
             className={`${ROW} tnum items-center border-t border-navy/8 text-sm font-semibold`}
           >
-            <div className="font-extrabold text-navy">{t(`zone${zone}`)}</div>
+            <div className="font-extrabold text-navy">{tt(id)}</div>
             <div className="leading-[1.5] font-medium text-ink/65">
-              {t(`zone${zone}Regions`)}
+              {tt(`${id}Desc`)}
             </div>
 
             {/* Keng ekranda ustunlar, mobilda esa yorliqli qatorlar. */}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import ZoneTable from "@/components/sections/ZoneTable";
+import TariffTable from "@/components/sections/TariffTable";
 import { ButtonLink } from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
@@ -57,7 +57,7 @@ export default async function PricingPage({
       </p>
 
       <div className="mb-14">
-        <ZoneTable />
+        <TariffTable />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
