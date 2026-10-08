@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import ZoneTable from "@/components/sections/ZoneTable";
+import TariffTable from "@/components/sections/TariffTable";
 import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
 import Slot from "@/components/ui/Slot";
@@ -24,7 +24,7 @@ export default async function Coverage() {
           </div>
         </div>
 
-        <ZoneTable />
+        <TariffTable />
       </div>
     </Container>
   );

@@ -22,7 +22,7 @@
     "subtitle": "Elchi Pochta — onlayn do'konlar uchun yetkazib berish xizmati. Buyurtmani sizdan olib ketamiz, O'zbekiston bo'ylab mijozga yetkazamiz va har bir qadamni ko'rsatib turamiz.",
     "ctaCalc": "Narxni hisoblash",
     "ctaPartner": "Biz bilan ishlash",
-    "note": "Toshkent ichida 1 kg gacha jo'natma — 15 000 so'mdan"
+    "note": "Toshkent shahri bo'ylab 1 kg gacha jo'natma — 35 000 so'mdan"
   },
   "track": {
     "title": "Jo'natmani kuzatish",
@@ -66,6 +66,10 @@
     "subtitle": "O'lcham, hajm va vaznni kiriting — narx darhol chiqadi.",
     "from": "Qayerdan",
     "to": "Qayerga",
+    "destination": "Qayergacha yetkazamiz",
+    "destCenter": "Viloyat markazigacha",
+    "destAddress": "Mijoz manziligacha",
+    "cityNote": "Toshkent shahri bo'ylab kuryer jo'natmani mijoz manziligacha yetkazadi — narx yagona.",
     "weight": "Vazn (kg)",
     "length": "Uzunlik (sm)",
     "width": "Kenglik (sm)",
@@ -109,21 +113,21 @@
   },
   "coverage": {
     "kicker": "Qamrov",
-    "title": "O'zbekiston bo'ylab, to'rt zonada",
-    "subtitle": "Har bir hudud zonaga bo'lingan. Zona narx va muddatni belgilaydi.",
-    "zone": "Zona",
-    "regions": "Hududlar",
+    "title": "O'zbekiston bo'ylab, uchta sodda tarif",
+    "subtitle": "Narxni yo'nalish belgilaydi: Toshkent shahri ichida, viloyat markazigacha yoki mijoz manziligacha.",
+    "tariff": "Tarif",
+    "detail": "Nimani o'z ichiga oladi",
     "upTo1kg": "1 kg gacha, so'm",
     "perExtraKg": "Har qo'shimcha kg, so'm",
-    "term": "Muddat",
-    "zone1": "1-zona",
-    "zone2": "2-zona",
-    "zone3": "3-zona",
-    "zone4": "4-zona",
-    "zone1Regions": "Toshkent shahri ichida",
-    "zone2Regions": "Toshkent viloyati",
-    "zone3Regions": "Samarqand, Buxoro, Navoiy, Jizzax, Sirdaryo, Farg'ona, Andijon, Namangan, Qashqadaryo",
-    "zone4Regions": "Surxondaryo, Xorazm, Qoraqalpog'iston"
+    "term": "Muddat"
+  },
+  "tariffs": {
+    "city": "Shahar ichida",
+    "cityDesc": "Toshkent shahri bo'ylab, mijoz manziligacha",
+    "center": "Viloyat markazigacha",
+    "centerDesc": "Barcha viloyat va shahar markazlari — filialdan olib ketiladi",
+    "address": "Manzilgacha",
+    "addressDesc": "Viloyatlarda kuryer mijoz manziligacha yetkazadi"
   },
   "why": {
     "kicker": "Nega Elchi Pochta",
@@ -288,7 +292,6 @@
     "currency": "so'm",
     "day": "kun",
     "days": "kun",
-    "zoneSuffix": "-zona",
     "none": "—"
   },
   "slots": {

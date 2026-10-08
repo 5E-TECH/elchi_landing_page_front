@@ -1,10 +1,9 @@
 /**
  * Saytning yagona ma'lumot manbai.
  *
- * ⚠️ MUHIM: quyidagi barcha raqam va kontaktlar DIZAYN PLACEHOLDER'lari.
- * Ular hali biznes tomonidan tasdiqlanmagan. Sayt public bo'lishidan oldin
- * `TODO(real)` belgili har bir qiymat real ma'lumot bilan almashtirilishi shart —
- * narxlar va telefon raqami noto'g'ri chiqsa, bu mijozga yetadigan xato.
+ * ⚠️ MUHIM: `TODO(real)` belgili qiymatlar hali biznes tomonidan
+ * tasdiqlanmagan DIZAYN PLACEHOLDER'lari — ular noto'g'ri chiqsa, bu
+ * mijozga yetadigan xato. Belgisi yo'q qiymatlar tasdiqlangan.
  */
 
 /** TODO(real): yakuniy domen. Sitemap, hreflang va OG shu qiymatga bog'liq. */
@@ -13,10 +12,10 @@ export const SITE_URL =
 
 export const SITE_NAME = "Elchi Pochta";
 
-/** TODO(real): kontaktlar biznesdan tasdiqlansin. */
+/** Telefon 08.10.2026 da tasdiqlangan. TODO(real): manzil va ish vaqti. */
 export const CONTACTS = {
-  phone: "+998 71 200 00 90",
-  phoneHref: "tel:+998712000090",
+  phone: "+998 70 015 15 52",
+  phoneHref: "tel:+998700151552",
   telegram: "@elchipochta",
   telegramHref: "https://t.me/elchipochta",
   addressKey: "contact.addressValue",
@@ -53,47 +52,44 @@ export const REGION_IDS = [
 ] as const;
 
 export type RegionId = (typeof REGION_IDS)[number];
-export type ZoneId = 1 | 2 | 3 | 4;
 
-/** Har bir hudud qaysi zonaga tegishli. */
-export const REGION_ZONE: Record<RegionId, ZoneId> = {
-  tsh: 1,
-  tshv: 2,
-  sam: 3,
-  buh: 3,
-  nav: 3,
-  jiz: 3,
-  sir: 3,
-  far: 3,
-  and: 3,
-  nam: 3,
-  qas: 3,
-  sur: 4,
-  xor: 4,
-  qqr: 4,
+/**
+ * Narxni GEOGRAFIK ZONA emas, YETKAZISH YO'NALISHI belgilaydi:
+ *  - `city`    — Toshkent shahri bo'ylab, mijoz manziligacha
+ *  - `center`  — boshqa viloyat yoki shahar markazigacha
+ *  - `address` — boshqa viloyatda mijoz manziligacha
+ */
+export const TARIFF_IDS = ["city", "center", "address"] as const;
+export type TariffId = (typeof TARIFF_IDS)[number];
+
+/**
+ * Toshkent shahri tashqarisidagi yetkazish turi — kalkulyatorda tanlanadi.
+ * `TariffId` ning qism to'plami: shahar ichida tanlov bo'lmaydi.
+ */
+export const DELIVERY_IDS = ["center", "address"] as const;
+export type DeliveryId = (typeof DELIVERY_IDS)[number];
+
+/**
+ * Tariflar — `base` 1 kg gacha jo'natma narxi (so'm), `extra` har qo'shimcha
+ * kg uchun ustama, `days` yetkazish muddati (min–max kun).
+ *
+ * `base` va `extra` 08.10.2026 da biznes tomonidan tasdiqlangan.
+ * TODO(real): `days` qiymatlari tasdiqlanmagan — eski zona jadvalidan olingan.
+ */
+export const TARIFFS: Record<
+  TariffId,
+  { base: number; extra: number; days: [number, number] }
+> = {
+  city: { base: 35_000, extra: 4_000, days: [1, 1] },
+  center: { base: 40_000, extra: 4_000, days: [1, 2] },
+  address: { base: 60_000, extra: 5_000, days: [2, 3] },
 };
 
 /**
- * Zona tariflari — narx so'mda, `days` yetkazish muddati (min–max kun).
- * TODO(real): to'rt zonaning ham `base` va `extra` narxi tasdiqlansin.
+ * Toshkent shahri tarifi faqat yo'nalishning IKKI uchi ham shu hududda
+ * bo'lganda qo'llanadi — Toshkent viloyati "boshqa viloyat" hisoblanadi.
  */
-export const ZONE_RATES: Record<
-  ZoneId,
-  { base: number; extra: number; days: [number, number] }
-> = {
-  1: { base: 15_000, extra: 2_500, days: [1, 1] },
-  2: { base: 20_000, extra: 3_000, days: [1, 1] },
-  3: { base: 27_000, extra: 4_000, days: [1, 2] },
-  4: { base: 34_000, extra: 5_000, days: [2, 3] },
-};
-
-/** Qaysi hududlar qaysi zonada — tarif jadvalining qatorlari. */
-export const ZONE_REGIONS: Record<ZoneId, RegionId[]> = {
-  1: ["tsh"],
-  2: ["tshv"],
-  3: ["sam", "buh", "nav", "jiz", "sir", "far", "and", "nam", "qas"],
-  4: ["sur", "xor", "qqr"],
-};
+export const CITY_REGION: RegionId = "tsh";
 
 /**
  * Qo'shimcha xizmatlar.

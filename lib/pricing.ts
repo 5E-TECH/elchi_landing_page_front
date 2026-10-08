@@ -1,15 +1,16 @@
 import {
+  CITY_REGION,
   EXTRAS,
-  REGION_ZONE,
+  TARIFFS,
   VOLUMETRIC_DIVISOR,
-  ZONE_RATES,
+  type DeliveryId,
   type RegionId,
-  type ZoneId,
+  type TariffId,
 } from "@/config/site";
 
 export type Quote = {
-  zone: ZoneId;
-  /** Zona tarifi — jadvalda ko'rsatish uchun */
+  tariff: TariffId;
+  /** Tarifning 1 kg gacha narxi — jadvalda ko'rsatish uchun */
   base: number;
   perExtraKg: number;
   days: [number, number];
@@ -27,6 +28,11 @@ export type Quote = {
 export type QuoteInput = {
   from: RegionId;
   to: RegionId;
+  /**
+   * Toshkent shahri tashqarisida: markazgacha yoki mijoz manziligacha.
+   * Shahar ichidagi yo'nalishda e'tiborga olinmaydi — u har doim manzilgacha.
+   */
+  delivery: DeliveryId;
   /** kg */
   weight: number;
   /** sm */
@@ -37,20 +43,36 @@ export type QuoteInput = {
   pickup: boolean;
 };
 
+/** Yo'nalishning ikki uchi ham Toshkent shahri ichidami. */
+export function isCityRoute(from: RegionId, to: RegionId): boolean {
+  return from === CITY_REGION && to === CITY_REGION;
+}
+
+/**
+ * Yo'nalish qaysi tarifga tushadi.
+ *
+ * Toshkent shahar narxi faqat ikki uchi ham shahar ichida bo'lganda; qolgan
+ * hamma holatda narxni foydalanuvchi tanlagan yetkazish turi belgilaydi.
+ */
+export function resolveTariff(
+  from: RegionId,
+  to: RegionId,
+  delivery: DeliveryId,
+): TariffId {
+  return isCityRoute(from, to) ? "city" : delivery;
+}
+
 /**
  * Yetkazib berish narxi.
  *
- * Formula "Elchi Pochta v2" dizaynidagi kalkulyatordan aynan olingan —
- * sayt ko'rsatgan narx dizaynerning maketidagi narx bilan bir xil bo'lishi shart.
+ * Asosiy narx tarifdan keladi (08.10.2026 da tasdiqlangan: 35 000 / 40 000 /
+ * 60 000 so'mdan). Vazn va hajm mantig'i o'zgarmagan — hajmli vazn ÷5000,
+ * birinchi kilogramm bazada, qolgani har kg uchun ustama.
  * O'zgartirishdan oldin `lib/pricing.test.ts` dagi testlarni ko'ring.
  */
 export function quote(input: QuoteInput): Quote {
-  // Yo'nalish narxini ikki uchining kattaroq zonasi belgilaydi.
-  const zone = Math.max(
-    REGION_ZONE[input.from],
-    REGION_ZONE[input.to],
-  ) as ZoneId;
-  const rate = ZONE_RATES[zone];
+  const tariff = resolveTariff(input.from, input.to, input.delivery);
+  const rate = TARIFFS[tariff];
 
   const volumetric =
     (input.length * input.width * input.height) / VOLUMETRIC_DIVISOR;
@@ -78,7 +100,7 @@ export function quote(input: QuoteInput): Quote {
   const total = Math.round((subtotal + expressFee + pickupFee) / 500) * 500;
 
   return {
-    zone,
+    tariff,
     base: rate.base,
     perExtraKg: rate.extra,
     days: rate.days,
