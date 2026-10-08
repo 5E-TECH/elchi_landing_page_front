@@ -22,7 +22,7 @@
     "subtitle": "Elchi Pochta is a delivery service for online stores. We collect the order from you, deliver it to your customer anywhere in Uzbekistan, and show you every step.",
     "ctaCalc": "Calculate the price",
     "ctaPartner": "Work with us",
-    "note": "Parcels up to 1 kg within Tashkent — from 15,000 UZS"
+    "note": "Parcels up to 1 kg within Tashkent city — from 35,000 UZS"
   },
   "track": {
     "title": "Track a parcel",
@@ -66,6 +66,10 @@
     "subtitle": "Enter the dimensions and weight — the price appears immediately.",
     "from": "From",
     "to": "To",
+    "destination": "Where we deliver",
+    "destCenter": "To the regional centre",
+    "destAddress": "To the customer's address",
+    "cityNote": "Within Tashkent city the courier delivers to the customer's address — one flat price.",
     "weight": "Weight (kg)",
     "length": "Length (cm)",
     "width": "Width (cm)",
@@ -109,21 +113,21 @@
   },
   "coverage": {
     "kicker": "Coverage",
-    "title": "Across Uzbekistan, in four zones",
-    "subtitle": "Every region belongs to a zone. The zone sets the price and the time.",
-    "zone": "Zone",
-    "regions": "Regions",
+    "title": "Across Uzbekistan, three simple tariffs",
+    "subtitle": "The direction sets the price: within Tashkent city, to a regional centre, or to the customer's address.",
+    "tariff": "Tariff",
+    "detail": "What it covers",
     "upTo1kg": "Up to 1 kg, UZS",
     "perExtraKg": "Each extra kg, UZS",
-    "term": "Time",
-    "zone1": "Zone 1",
-    "zone2": "Zone 2",
-    "zone3": "Zone 3",
-    "zone4": "Zone 4",
-    "zone1Regions": "Within Tashkent city",
-    "zone2Regions": "Tashkent region",
-    "zone3Regions": "Samarkand, Bukhara, Navoiy, Jizzakh, Sirdaryo, Fergana, Andijan, Namangan, Kashkadarya",
-    "zone4Regions": "Surkhandarya, Khorezm, Karakalpakstan"
+    "term": "Time"
+  },
+  "tariffs": {
+    "city": "Within the city",
+    "cityDesc": "Across Tashkent city, to the customer's address",
+    "center": "To a regional centre",
+    "centerDesc": "Every regional and city centre — pickup from the branch",
+    "address": "To the address",
+    "addressDesc": "In the regions, the courier delivers to the customer's address"
   },
   "why": {
     "kicker": "Why Elchi Pochta",
@@ -288,7 +292,6 @@
     "currency": "UZS",
     "day": "day",
     "days": "days",
-    "zoneSuffix": "-zone",
     "none": "—"
   },
   "slots": {

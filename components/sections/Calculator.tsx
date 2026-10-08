@@ -7,12 +7,29 @@ import { ButtonLink } from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Kicker from "@/components/ui/Kicker";
 import { CTA_HREF } from "@/config/nav";
-import { REGION_IDS, type RegionId } from "@/config/site";
-import { formatDays, formatMoney, formatWeight, quote } from "@/lib/pricing";
+import {
+  DELIVERY_IDS,
+  REGION_IDS,
+  type DeliveryId,
+  type RegionId,
+} from "@/config/site";
+import {
+  formatDays,
+  formatMoney,
+  formatWeight,
+  isCityRoute,
+  quote,
+} from "@/lib/pricing";
 
 const FIELD =
   "w-full rounded-[12px] border-[1.5px] border-navy/16 bg-white px-3.5 py-3 text-[14.5px] font-semibold text-ink";
 const LABEL = "mb-[7px] block text-[12.5px] font-bold text-ink/55";
+
+/** Yetkazish turi tugmalarining matn kalitlari — `calc` bo'limida. */
+const DESTINATION_KEY: Record<DeliveryId, string> = {
+  center: "destCenter",
+  address: "destAddress",
+};
 
 /** Bo'sh yoki noto'g'ri kiritilgan qiymat hisobni buzmasin. */
 function toNumber(raw: string, min: number) {
@@ -25,11 +42,13 @@ export default function Calculator() {
   const tr = useTranslations("regions");
   const u = useTranslations("units");
   const tn = useTranslations("nav");
+  const tt = useTranslations("tariffs");
 
   // Maydonlar matn sifatida saqlanadi — foydalanuvchi "0.5" yozayotganda
   // oraliq "0" qiymati darhol minimalga o'zgarib ketmasin.
   const [from, setFrom] = useState<RegionId>("tsh");
   const [to, setTo] = useState<RegionId>("sam");
+  const [delivery, setDelivery] = useState<DeliveryId>("center");
   const [weight, setWeight] = useState("1.2");
   const [length, setLength] = useState("30");
   const [width, setWidth] = useState("22");
@@ -42,6 +61,7 @@ export default function Calculator() {
       quote({
         from,
         to,
+        delivery,
         weight: toNumber(weight, 0.1),
         length: toNumber(length, 1),
         width: toNumber(width, 1),
@@ -49,8 +69,12 @@ export default function Calculator() {
         express,
         pickup,
       }),
-    [from, to, weight, length, width, height, express, pickup],
+    [from, to, delivery, weight, length, width, height, express, pickup],
   );
+
+  // Toshkent shahri ichida yetkazish turi tanlanmaydi — narx yagona va
+  // kuryer har doim mijoz manziligacha boradi.
+  const cityRoute = isCityRoute(from, to);
 
   const currency = u("currency");
   const none = u("none");
@@ -104,6 +128,33 @@ export default function Calculator() {
                 ))}
               </select>
             </div>
+
+            {cityRoute ? (
+              <p className="rounded-[12px] bg-navy/6 px-3.5 py-3 text-[12.5px] leading-[1.6] font-medium text-ink/55 sm:col-span-2">
+                {t("cityNote")}
+              </p>
+            ) : (
+              <fieldset className="sm:col-span-2">
+                <legend className={LABEL}>{t("destination")}</legend>
+                <div className="flex gap-[3px] rounded-pill bg-navy/7 p-1">
+                  {DELIVERY_IDS.map((id) => (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setDelivery(id)}
+                      aria-pressed={delivery === id}
+                      className={`flex-1 cursor-pointer rounded-pill p-2.5 text-sm font-bold transition-colors ${
+                        delivery === id
+                          ? "bg-navy text-bg"
+                          : "text-ink/55 hover:text-navy"
+                      }`}
+                    >
+                      {t(DESTINATION_KEY[id])}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+            )}
 
             <div className="sm:col-span-2">
               <label className={LABEL} htmlFor="calc-weight">
@@ -221,8 +272,7 @@ export default function Calculator() {
               {formatMoney(q.total, currency)}
             </p>
             <p className="text-[13.5px] font-semibold text-bg/60">
-              {tr(from)} → {tr(to)} · {q.zone}
-              {u("zoneSuffix")}
+              {tr(from)} → {tr(to)} · {tt(q.tariff)}
             </p>
 
             <Divider />
