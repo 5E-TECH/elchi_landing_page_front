@@ -80,7 +80,7 @@ export const TARIFFS: Record<
   TariffId,
   { base: number; extra: number; days: [number, number] }
 > = {
-  city: { base: 35_000, extra: 5_000, days: [1, 1] },
+  city: { base: 35_000, extra: 4_000, days: [1, 1] },
   center: { base: 40_000, extra: 4_000, days: [1, 2] },
   address: { base: 60_000, extra: 5_000, days: [2, 3] },
 };

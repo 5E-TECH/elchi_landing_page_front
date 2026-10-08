@@ -69,7 +69,7 @@ describe("quote", () => {
     expect(q.total).toBe(65_000);
   });
 
-  it("Toshkent shahri 35 000 dan, har qo'shimcha kg 5 000", () => {
+  it("Toshkent shahri 35 000 dan, har qo'shimcha kg 4 000", () => {
     const q = quote({
       ...BASE,
       from: "tsh",
@@ -82,9 +82,10 @@ describe("quote", () => {
 
     expect(q.tariff).toBe("city");
     expect(q.base).toBe(35_000);
-    // 1 kg bazada, qolgan 2 kg × 5 000
-    expect(q.extra).toBe(10_000);
-    expect(q.total).toBe(45_000);
+    // 1 kg bazada, qolgan 2 kg × 4 000
+    expect(q.perExtraKg).toBe(4_000);
+    expect(q.extra).toBe(8_000);
+    expect(q.total).toBe(43_000);
   });
 
   it("hajmli vazn haqiqiy vazndan katta bo'lsa, o'sha hisoblanadi", () => {
